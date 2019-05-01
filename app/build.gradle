@@ -1,0 +1,93 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            storeFile file('C:/Users/Perfwxc/.android/debug.keystore')
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+    defaultConfig {
+        applicationId "com.wxc.coolcar"
+        minSdkVersion 21
+        targetSdkVersion 26
+        compileSdkVersion 26
+        buildToolsVersion "26.0.2"
+        versionCode 1
+        versionName "3.5.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        manifestPlaceholders = [
+                GETUI_APP_ID    : "KiMeKcxcab9kDZwz3b4G67",
+                GETUI_APP_KEY   : "r22nuorfKG76PPxJ33jXI1",
+                GETUI_APP_SECRET: "bFRGOkyaGbAoFeuVJy2u76"
+        ]
+        ndk {
+            abiFilters "armeabi", "x86", "arm64-v8a", "armeabi-v7a", "x86_64"
+        }
+    }
+    dexOptions {
+        javaMaxHeapSize "2g"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+android {
+    useLibrary 'org.apache.http.legacy'
+    buildToolsVersion '27.0.3'
+    sourceSets {
+        main {
+            //jni库的调用会到资源文件夹下libs里面找so文件
+            jniLibs.srcDirs = ['src/main/jniLibs']
+        }
+    }
+}
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(exclude: '*.bak', dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:24.2.1'
+    testCompile 'junit:junit:4.12'
+    testCompile 'com.android.support.test:runner:0.2'
+    implementation 'com.android.support.test:runner:1.0.2'
+    implementation 'com.android.support:design:27.1.0'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.android.support:recyclerview-v7:24.2.1'
+    implementation 'com.android.support:cardview-v7:24.2.1'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.4.1'
+    implementation 'com.google.code.gson:gson:2.7'
+    implementation 'com.githang:status-bar-compat:latest.integration'
+    implementation 'com.getui:sdk:2.12.3.0'
+    implementation 'org.apache.httpcomponents:httpcore:4.4.1'
+    implementation 'org.apache.httpcomponents:httpclient:4.5'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.android.support:multidex:1.0.2'
+    compile files('libs/com.baidu.tts_2.2.9.20161020_154fa02_release.jar')
+    compile files('libs/VoiceRecognition-2.1.20.jar')
+    compile files('libs/galaxy-v2.0.jar')
+    implementation files('libs/mpandroidchartlibrary-2-1-6.jar')
+    implementation files('libs/BaiduLBS_Android.jar')
+    implementation project(path: ':mylibrary')
+    implementation files('libs/com.baidu.tts_2.2.9.20161020_154fa02_release.jar')
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'com.android.support:support-v4:27.1.0'
+    }}
+
+configurations {
+    all*.exclude group: 'com.android.support', module: 'support-v4'
+}
+configurations {all {exclude module: 'httpclient'exclude module: 'commons-logging'}}

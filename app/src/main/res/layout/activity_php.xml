@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <com.wxc.coolcar.Information.ItemGroup
+        android:id="@+id/name_ig"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="9dp"
+        app:edt_hint_content="请输入用户名"
+        app:jt_visible="false"
+        app:paddingLeft="15dp"
+        app:title="用户名" >
+
+        <ImageView
+            android:id="@+id/clear_iv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:padding="8dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/close" />
+    </com.wxc.coolcar.Information.ItemGroup>
+
+    <com.wxc.coolcar.Information.ItemGroup
+    android:id="@+id/tel_ig"
+    android:layout_width="match_parent"
+    android:layout_height="50sp"
+    android:layout_alignParentStart="true"
+    android:layout_below="@+id/name_ig"
+    app:edt_hint_content="请输入手机号"
+    app:jt_visible="false"
+    app:paddingLeft="15dp"
+    app:title="手机号">
+
+</com.wxc.coolcar.Information.ItemGroup>
+
+    <com.wxc.coolcar.Information.ItemGroup
+        android:id="@+id/call_ig"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tel_ig"
+        app:edt_hint_content="请输入应急手机号（默认为120）"
+        app:jt_visible="false"
+        app:paddingLeft="15dp"
+        app:title="应急手机号">
+
+    </com.wxc.coolcar.Information.ItemGroup>
+
+
+    <com.wxc.coolcar.Information.ItemGroup
+        android:id="@+id/type_ig"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/call_ig"
+        app:edt_hint_content="请输入汽车型号"
+        app:jt_visible="false"
+        app:paddingLeft="15dp"
+        app:title="车型" />
+
+    <com.wxc.coolcar.Information.ItemGroup
+        android:id="@+id/add_ig"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/type_ig"
+        app:edt_hint_content="请输入居住地"
+        app:jt_visible="false"
+        app:paddingLeft="15dp"
+        app:title="居住地" />
+
+
+
+    <!--结果-->
+
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="211dp"
+        android:text="保存" />
+
+</RelativeLayout>

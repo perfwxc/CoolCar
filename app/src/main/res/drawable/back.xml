@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 背景部分 -->
+    <!--bottom代表背景部分在上边缘超出阴影的高度，right代表背景部分在左边超出阴影的宽度（相对应的offset） -->
+    <item
+        android:bottom="3dp"
+        android:right="3dp">
+        <shape android:shape="rectangle" >
+
+            <gradient
+                android:angle="270"
+                android:endColor="#ffffff"
+                android:startColor="#ffffff" />
+
+            <corners
+                android:bottomLeftRadius="12dip"
+                android:bottomRightRadius="12dip"
+                android:topLeftRadius="12dip"
+                android:topRightRadius="12dip" />
+        </shape>
+    </item>
+
+</layer-list>

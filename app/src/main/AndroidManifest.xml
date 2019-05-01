@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.wxc.coolcar">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- iBeancon功能所需权限 -->;
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <!-- 个推3.0电子围栏功能所需权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!--访问照相机手机震动权限-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    - <!-- 允许访问闪光灯
+  -->
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    - <!-- 允许程序保持进程不进入休眠状态
+  -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:name="android.support.multidex.MultiDexApplication"
+        android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="86wBFVRprDa6tbj3k0ECLvE8x6Kp4ZyG"
+            tools:replace="android:value"/>
+        <meta-data
+            android:name="com.baidu.speech.APP_ID"
+            android:value="11319692" />
+        <meta-data
+            android:name="com.baidu.speech.API_KEY"
+            android:value="iRwaZnUB2fiGI7i1fdMttAld" />
+        <meta-data
+            android:name="com.baidu.speech.SECRET_KEY"
+            android:value="SjNwKCkIItx4ABRejGSP9kciwbQc51VQ" />
+        <service
+            android:name="com.baidu.speech.VoiceRecognitionService"
+            android:exported="false" />
+
+        <activity
+            android:name="com.baidu.voicerecognition.android.ui.BaiduASRDigitalDialog"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:theme="@android:style/Theme.Dialog"
+            android:exported="false"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.baidu.action.RECOGNIZE_SPEECH" ></action>
+                <category android:name="android.intent.category.DEFAULT" ></category>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".Guide.WelcomeActivity">
+
+        </activity>
+
+
+        <activity android:name=".Main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".Chat.ChatActivity"
+            >
+        </activity>
+
+    <activity
+            android:name=".Health.MActivity"
+            android:theme="@style/FruitActivityTheme">
+        </activity>
+
+        <activity
+            android:name="com.wxc.coolcar.Map.MapActivity"
+            >
+        </activity>
+
+        <service
+            android:name=".Util.PushService"
+            android:exported="true"
+            android:label="PushService"
+            android:process=":pushservice">
+        </service>
+
+        <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"> </service>
+
+
+        <activity
+            android:name=".Environment.NActivity"
+            android:theme="@style/FruitActivityTheme">
+        </activity>
+        <activity
+            android:name=".Chart.ChartActivity"
+            android:theme="@style/FruitActivityTheme">
+        </activity>
+        <activity android:name=".Information.ShowActivity" />
+        <activity android:name=".Information.PHPActivity" />
+        <activity android:name=".Login.StartActivity" />
+        <activity android:name=".Guide.WelActivity" />
+        <activity android:name=".Health.Detail" />
+        <activity android:name=".Chart.Web" />
+        <activity android:name=".Environment.Eetail" />
+        <activity android:name=".Main.VoiceActivity" />
+
+
+        <service android:name="com.wxc.coolcar.Util.IntentService"/>
+
+    </application>
+</manifest>

@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:scrollbars="vertical"
+    android:fadingEdge="vertical">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_alignParentStart="true"
+        android:padding="0dp"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="@color/detailback"
+            android:layout_height="50dp">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@color/detailback"
+                app:contentInsetStart="0.0dp"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                >
+            </android.support.v7.widget.Toolbar>
+            <Button
+                android:id="@+id/ebutton"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/back_btn"
+                />
+
+
+        </RelativeLayout>
+        <com.wxc.coolcar.Chart.EnviScoreView
+            android:id="@+id/imark"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:background="@drawable/detailback" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+
+
+            android:layout_marginTop="10dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            app:cardCornerRadius="4dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="153dp"
+                android:background="@drawable/back"
+                android:orientation="vertical"
+                android:stackFromBottom="true">
+
+                <TextView
+                    android:id="@+id/iwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:gravity="top"
+                    android:textColor="@color/item_group_title"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dwd"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="top"
+                    android:gravity="center"
+                    android:text="健康信息"
+                    android:textColor="@color/item_group_title"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+
+                <ImageView
+                    android:id="@+id/imwd"
+                    android:layout_width="160dp"
+                    android:layout_height="120dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_toEndOf="@+id/dwd"
+                    android:src="@drawable/wd" />
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+
+
+            app:cardCornerRadius="4dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            >
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="153dp"
+                android:background="@drawable/back"
+                android:orientation="vertical"
+                android:stackFromBottom="true">
+
+                <TextView
+                    android:id="@+id/ixl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:gravity="top"
+                    android:textColor="@color/item_group_title"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dxl"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="top"
+                    android:gravity="center"
+                    android:text="健康信息"
+                    android:textColor="@color/item_group_title"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+
+                <ImageView
+                    android:id="@+id/imxl"
+                    android:layout_width="160dp"
+                    android:layout_height="120dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_toEndOf="@+id/dxl"
+                    android:src="@drawable/yw" />
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+
+
+            app:cardCornerRadius="4dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            >
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="153dp"
+                android:background="@drawable/back"
+                android:orientation="vertical"
+                android:stackFromBottom="true">
+
+                <TextView
+                    android:id="@+id/ixy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:gravity="top"
+                    android:textColor="@color/item_group_title"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dxy"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="top"
+                    android:gravity="center"
+                    android:text="健康信息"
+                    android:textColor="@color/item_group_title"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+
+                <ImageView
+                    android:id="@+id/imxy"
+                    android:layout_width="160dp"
+                    android:layout_height="120dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_toEndOf="@+id/dxy"
+                    android:src="@drawable/gz" />
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+
+
+            app:cardCornerRadius="4dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            >
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="153dp"
+                android:background="@drawable/back"
+                android:orientation="vertical"
+                android:stackFromBottom="true">
+
+                <TextView
+                    android:id="@+id/ijj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:gravity="top"
+                    android:textColor="@color/item_group_title"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/djj"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="top"
+                    android:gravity="center"
+                    android:text="健康信息"
+                    android:textColor="@color/item_group_title"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+
+                <ImageView
+                    android:id="@+id/imjj"
+                    android:layout_width="160dp"
+                    android:layout_height="120dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_toEndOf="@+id/djj"
+                    android:src="@drawable/co" />
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+
+
+            app:cardCornerRadius="4dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            >
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="153dp"
+                android:background="@drawable/back"
+                android:orientation="vertical"
+                android:stackFromBottom="true">
+
+                <TextView
+                    android:id="@+id/iqt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:gravity="top"
+                    android:textColor="@color/item_group_title"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dqt"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="top"
+                    android:gravity="center"
+                    android:text="健康信息"
+                    android:textColor="@color/item_group_title"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+
+                <ImageView
+                    android:id="@+id/imqt"
+                    android:layout_width="160dp"
+                    android:layout_height="120dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_toEndOf="@+id/dqt"
+                    android:src="@drawable/h2s" />
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tips"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <TextView
+            android:id="@+id/tip1"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="3dp"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tip2"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="3dp"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tip3"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="3dp"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tip4"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="3dp"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tip5"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="3dp"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tip6"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="3dp"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tip7"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="3dp"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tip8"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tip9"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="3dp"
+
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tip10"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="3dp"
+            android:textSize="15sp" />
+
+
+
+    </LinearLayout>
+</ScrollView>

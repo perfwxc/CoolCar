@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.wxc.coolcar.Login.StartActivity"
+    android:orientation="vertical"
+    android:background="#6972f1">
+
+    <ImageView
+        android:id="@+id/login_avatar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/vegeta" />
+
+    <EditText
+        android:id="@+id/login_id"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="48dp"
+        android:background="@color/colorLoginEditText"
+        android:hint="@string/textlogin_id"
+        android:paddingLeft="8dp" />
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorLoginEditText"
+        android:hint="@string/textlogin_password"
+        android:paddingLeft="8dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp">
+
+        <CheckBox
+            android:id="@+id/login_rememberpassword"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_alignBaseline="@+id/login_autologin"
+            android:layout_alignBottom="@+id/login_autologin"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/rememberpassword" />
+
+        <CheckBox
+            android:id="@+id/login_autologin"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/autologin" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/shape"
+        android:text="@string/text_loginbutton"
+        android:textColor="@color/colorlogin_text"
+        android:textSize="20dp" />
+</LinearLayout>

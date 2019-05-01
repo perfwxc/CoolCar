@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_scan" android:title="more"
+
+        android:orderInCategory="100" app:showAsAction="always" />
+    <item
+        android:id="@+id/action_add"
+        android:icon="@android:drawable/btn_star_big_on"
+
+        android:orderInCategory="100"
+        android:title="more"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_item1"
+        android:title="按钮1"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_item2"
+        android:title="按钮2"
+        app:showAsAction="never" />
+</menu>

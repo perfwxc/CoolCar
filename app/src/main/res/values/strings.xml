@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">易驾</string>
+    <string name="img">环境质量</string>
+    <string name="textlogin_id">用户名（默认为110）</string>
+    <string name="textlogin_password">密码（默认为110）</string>
+    <string name="rememberpassword">记住密码</string>
+    <string name="autologin">自动登陆</string>
+    <string name="text_loginbutton">登陆</string>
+    <string name="name">环境质量</string>
+    <string name="nicheng">环境质量</string>
+    <string name="id">环境质量</string>
+    <string name="text1">环境质量</string>
+    <string name="text2">环境质量</string>
+    <string name="text3">环境质量</string>
+    <string name="text4">环境质量</string>
+    <string name="sex">环境质量</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="exit">EXIT</string>
+    <string name="start">GOT IT</string>
+    <string name="introname"> </string>s
+    <string name="introgroup"> 智能网联汽车驾驶健康伙伴系统</string>
+    <string name="IflytekAPP_id">5b0d72c2</string>
+
+
+
+    <string name="slide_1_title">健康信息页面</string>
+    <string name="slide_2_title">环境信息页面</string>
+    <string name="slide_3_title">个人信息界面</string>
+    <string name="slide_4_title">地图定位界面</string>
+    <string name="slide_5_title">交流讨论界面</string>
+
+    <string name="play_again">play again</string>
+</resources>
