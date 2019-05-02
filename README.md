@@ -138,13 +138,11 @@ https://github.com/guodongxiaren/ImageCache/raw/master/Logo/foryou.gif
 |#|语法|效果|
 |---|---|----
 |1|`![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo")`|![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo")
-|2|`![][foryou]`|![][foryou]
+|2|`![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo")`|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/编辑信息.png)
 
 注意例2的写法使用了**URL标识符**的形式，在[链接](#链接)一节有介绍。
 >在文末有foryou的定义：
-```
-[foryou]:https://github.com/guodongxiaren/ImageCache/raw/master/Logo/foryou.gif
-```
+
 
 链接
 ------
