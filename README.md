@@ -86,7 +86,7 @@
 |---|---|----
 |1|`主界面`<br>APP的主界面，设计简洁，包括了人体健康与环境信息两个板块，点击即可进入相应界面|　　<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/主界面.png" height=400>
 |2|`人体健康`<br>人体健康信息界面，展示了用户各时刻的身体指标，点击时间可进入详细健康信息页面，点击中部指标，系统会进行语音播报，点击右侧评级，系统会播报相应健康建议，点击右上方信箱按钮，可以查看自己的历史健康变化趋势|　　<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/健康数据信息.png" height=400>
-|3|`各时刻详细信息`<br>详细健康信息与建议界面，系统为用户的健康指标进行打分，并在底部为用户提供了相应建议|　　<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/各时刻信息建议.jpg" width=200>
+|3|`各时刻详细信息`<br>详细健康信息与建议界面，系统为用户的健康指标进行打分，并在底部为用户提供了相应建议|　　<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/各时刻信息建议.JPG" width=200>
 |4|`历史健康趋势`<br>历史健康趋势页面，通过折线图展示了用户过去一段时间内的健康变化趋势，使用户进一步了解自己的健康状况|　　<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/折线图.png" height=400>
 |5|`月度健康报告`<br>月度健康报告设计思想类似于网易云音乐的年度听歌报告，展示了用户一个月期间的身体健康情况|　　<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/月度健康报告.png" height=400>
 |6|`车内环境`<br>车内环境信息界面，展示了车内各时刻的环境指标，点击时间可以进入详细环境信息界面，点击中部的指标，系统会进行语言播报，点击右侧评级，系统会播报相应的环境建议|　　<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/车内环境.png" height=400>
