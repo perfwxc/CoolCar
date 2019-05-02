@@ -73,7 +73,11 @@
 |2|`百度AI`| 用于语音播报、语音唤醒，为用户带来更好的人机交互   |[百度AI](http://ai.baidu.com/docs#/TTS-Android-SDK/top "悬停显示")|
 |3|`MPChart`| 用于绘制图表、折线等，类似ECharts    |[MPChart](https://github.com/PhilJay/MPAndroidChart "悬停显示")|
 |4|`个推`|  用于服务器后台检测到异常数据后自动推送  |[个推](http://docs.getui.com/getui/start/andorid/ "悬停显示")|
+|5|`腾讯短信`|  用于短信验证注册、登陆 |[腾讯短信](https://cloud.tencent.com/ "悬停显示")|
 
+### 数据库
+数据库采用MySQL，由于没有接受过专业的数据库课程学习，数据库设计较为鸡肋，能满足基本需求。
+附数据库.sql文件下载：[CoolCar.sql](https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/data/coolcar.sql "悬停显示")
 
 # 一级标题  
 ## 二级标题  
