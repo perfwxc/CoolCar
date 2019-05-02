@@ -54,6 +54,19 @@
 
 
 ------
+
+## 开发过程
+
+### 开发语言
+
+项目整体采用Java（Android）开发，数据库采用MySQL，后端与数据库的交互采用PHP。
+
+### 开发工具
+
+安卓项目开发采用Android Studio 3.0，最低支持安卓版本为5.0。服务器采用腾讯云服务器，服务器软件使用了PHPStudy（包含Apache、phpmyadmin、MySql等集成环境）。<br>
+<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/安卓开发工具.png" >
+
+
 # 一级标题  
 ## 二级标题  
 ### 三级标题  
