@@ -52,9 +52,9 @@
 
 |#|手机应用|核心功能|特点分析|
 |---|---|----|----
-|1|奔驰智能互联手机应用<br>![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/奔驰.png)|![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo")|`baidu`
-|2|乐蜂窝<br>![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/乐蜂窝.png)|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/编辑信息.png)|`baidu`
-|3|车载精灵<br>![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/车载精灵.png)|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/编辑信息.png)|`baidu`
+|1|奔驰智能互联手机应用<br><img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/奔驰.png" width=100 height=100>|![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo")|`baidu`
+|2|乐蜂窝<br><img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/乐蜂窝.png" width=100 height=100>|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/编辑信息.png)|`baidu`
+|3|车载精灵<br><img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/车载精灵.png" width=100 height=100>|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/编辑信息.png)|`baidu`
 
 ------
 
