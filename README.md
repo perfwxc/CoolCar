@@ -63,8 +63,16 @@
 
 ### 开发工具
 
-安卓项目开发采用Android Studio 3.0，最低支持安卓版本为5.0。服务器采用腾讯云服务器，服务器软件使用了PHPStudy（包含Apache、phpmyadmin、MySql等集成环境）。<br>
-　　　　　　　　　　　　　　<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/安卓开发工具.png" height=200px>
+安卓项目开发采用Android Studio 3.0，最低支持安卓版本为5.0。服务器采用腾讯云服务器，服务器软件使用了PHPStudy（包含Apache、PHPMyAdmin、MySQL等集成环境）。<br>
+　　　　　　　　　<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/安卓开发工具.png" height=200px>  　　　<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/phpstudy.png" height=200px>
+
+### API调用
+|#|API|使用功能|调用地址|
+|---|----|----|-----|
+|1|`百度地图`| 用于地图定位、导航   |[百度地图](http://lbsyun.baidu.com/index.php?title=androidsdk/guide/create-project/androidstudio "悬停显示")|
+|2|`百度AI`| 用于语音播报、语音唤醒，为用户带来更好的人机交互   |[百度AI](http://ai.baidu.com/docs#/TTS-Android-SDK/top "悬停显示")|
+|3|`MPChart`| 用于绘制图表、折线等，类似ECharts    |[MPChart](https://github.com/PhilJay/MPAndroidChart "悬停显示")|
+|4|`个推`|  用于服务器后台检测到异常数据后自动推送  |[个推](http://docs.getui.com/getui/start/andorid/ "悬停显示")|
 
 
 # 一级标题  
