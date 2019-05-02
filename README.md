@@ -17,26 +17,15 @@
     * 社会背景
     * 竞品分析
 * [项目简介](#项目简介)
-* [文本](#文本)
-    * 普通文本
-    * 单行文本
-    * 多行文本
-    * 文字高亮
-    * 换行
-    * 斜体
-    * 粗体
-    * 删除线
-* [图片](#图片)
-    * 来源于网络的图片
-    * GitHub仓库中的图片
-* [链接](#链接) 
-    * 文字超链接
-        *  链接外部URL
-        *  链接本仓库里的URL
-    *  锚点
-    * [图片链接](#图片链接)
+* [开发过程](#开发过程)
+    * 开发语言
+    * 开发工具
+    * API调用
+    * 数据库
+* [功能与界面展示](#功能与界面展示)
 
 ------
+## 项目背景
 
 ### 社会背景
 
@@ -52,13 +41,14 @@
 
 |#|手机应用|核心功能|特点分析|
 |---|---|----|----
-|1|`奔驰智能互联手机应用`<br>`666`|![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo")|`baidu`
-|2|`乐蜂窝`<br>`666`|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/编辑信息.png)|`baidu`
-|3|`车载精灵`<br>`666`|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/编辑信息.png)|`baidu`
+|1|奔驰智能互联手机应用<br>　　<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/奔驰.png" width=100 height=100>|1、车辆远程遥控，远程开锁。<br>2、用户手机地图上查看车辆停放位置。<br>3、地图查询，车载导航系统。<br>|**仅实现了汽车远程遥控**
+|2|　　　乐蜂窝<br>　　<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/乐蜂窝.png" width=100 height=100>|1、测量用户的心率、血压等健康指标<br>2、检查车辆位置、车辆胎压胎温<br>|**缺少针对驾驶员的健康监测**
+|3|　　车载精灵<br>　　<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/车载精灵.png" width=100 height=100>|1、驾驶员人体健康监测分析<br>2、车内环境监测分析<br>|**对驾驶员与车内环境进行全面监测**
 
 ------
 
 ### 项目简介
+
 
 本系统主要包括**健康信息**和**环境信息**两大板块，兼有地图定位、车友讨论和介绍指南等小功能。通过集成在方向盘上的硬件设备，系统能够采集到驾驶员的体温、心率、血压等生理指标以及车内环境的温度、湿度、紫外线强度等指标。APP巧妙地将车内环境和车主健康状况监测融合到一起，使车主能及时掌握自身健康指标以及车内环境，避免因健康状况而引发的安全事故。此外，系统能够通过APP向驾驶者**推送**健康信息，并进行语音播报，可在紧急时刻**自动**拨打求救电话并向呼救目标发送自己的位置信息。
 
