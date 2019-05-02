@@ -39,7 +39,7 @@
 
 ### 竞品分析
 
-|#|功能介绍|界面展示|
+|#|应用|功能介绍|核心特色
 |---|---|----|----|
 |1|奔驰智能互联手机应用<br>　　<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/奔驰.png" width=100 height=100>|1、车辆远程遥控，远程开锁。<br>2、用户手机地图上查看车辆停放位置。<br>3、地图查询，车载导航系统。<br>|**仅实现了汽车远程遥控**
 |2|　　　乐蜂窝<br>　　<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/乐蜂窝.png" width=100 height=100>|1、测量用户的心率、血压等健康指标<br>2、检查车辆位置、车辆胎压胎温<br>|**缺少针对驾驶员的健康监测**
