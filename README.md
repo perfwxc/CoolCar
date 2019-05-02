@@ -82,7 +82,22 @@
 
 ## 功能与界面展示
 
-
+|#|功能介绍|界面展示|
+|---|---|----
+|1|`主界面`<br>APP的主界面，设计简洁，包括了人体健康与环境信息两个板块，点击即可进入相应界面|<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/主界面.png" height=400>)
+|2|`人体健康`<br>人体健康信息界面，展示了用户各时刻的身体指标，点击时间可进入详细健康信息页面，点击中部指标，系统会进行语音播报，点击右侧评级，系统会播报相应健康建议，点击右上方信箱按钮，可以查看自己的历史健康变化趋势|<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/健康数据信息.png" height=400>)
+|3|`各时刻详细信息`<br>详细健康信息与建议界面，系统为用户的健康指标进行打分，并在底部为用户提供了相应建议|<img src="https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/pics/各时刻信息+建议.jpg" height=400>)
+|4|`历史健康趋势`<br>历史健康趋势页面，通过折线图展示了用户过去一段时间内的健康变化趋势，使用户进一步了解自己的健康状况|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/折线图.png)
+|5|`月度健康报告`<br>月度健康报告设计思想类似于网易云音乐的年度听歌报告，展示了用户一个月期间的身体健康情况|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/月度健康报告.png)
+|6|`车内环境`<br>车内环境信息界面，展示了车内各时刻的环境指标，点击时间可以进入详细环境信息界面，点击中部的指标，系统会进行语言播报，点击右侧评级，系统会播报相应的环境建议|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/编辑信息.png)
+|7|`个人信息`<br>个人信息界面展示了用户的基本情况，包括了用户的**应急联系人**的联络方式|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/个人信息.png)
+|8|`编辑信息`<br>编辑信息界面用于编辑用户的个人信息|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/编辑信息.png)
+|9|`地图定位`<br>地图定位为用户提供定位导航服务，方便用户驾车|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/地图定位.png)
+|10|`车友讨论`<br>系统根据用户个人信息中的车型，为用户自动分配车友圈，在此可与车友讨论交流|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/车友讨论.png)
+|11|`介绍指南`<br>若用户对APP的操作不熟悉，可根据介绍指南操作|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/引导.png)
+|12|`异常报警`<br>系统检测到用户的身体健康数据获车内环境数据有异常时，健康信息页面的评级将显示异常图标，并通知用户|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/异常报警.png)
+|13|`消息推送`<br>由服务器后台实时推送用户的健康信息|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/消息推送.png)
+|14|`硬件设备`<br>硬件设备基于STM32 F407开发，图示为将硬件集成在方向盘后的效果|![](https://github.com/perfwxc/CoolCar/raw/master/release/pics/硬件.jpg)
 
 文本
 ------
