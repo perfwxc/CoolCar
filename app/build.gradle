@@ -85,9 +85,10 @@ dependencies {
 configurations.all {
     resolutionStrategy {
         force 'com.android.support:support-v4:27.1.0'
-    }}
+    }
+}
 
 configurations {
     all*.exclude group: 'com.android.support', module: 'support-v4'
 }
-configurations {all {exclude module: 'httpclient'exclude module: 'commons-logging'}}
+configurations { all { exclude module: 'httpclient' exclude module: 'commons-logging' } }

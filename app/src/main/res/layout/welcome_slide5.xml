@@ -7,9 +7,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-                android:orientation="vertical"
         android:layout_centerInParent="true"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -18,13 +18,13 @@
             android:text="@string/slide_5_title"
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_title"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginBottom="30dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:src="@drawable/guide_5" />
     </LinearLayout>
 </RelativeLayout>

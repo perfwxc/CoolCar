@@ -5,71 +5,59 @@ import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Message;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.ScrollView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.baidu.tts.auth.AuthInfo;
-import com.baidu.tts.client.SpeechError;
-import com.baidu.tts.client.SpeechSynthesizer;
-import com.baidu.tts.client.SpeechSynthesizerListener;
-import com.baidu.tts.client.TtsMode;
-import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.wxc.coolcar.Chart.ChartActivity;
-import com.wxc.coolcar.Environment.Adapter2;
-import com.wxc.coolcar.Main.MainActivity;
 import com.wxc.coolcar.R;
 import com.wxc.coolcar.User.User;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 import static com.githang.statusbar.StatusBarCompat.setStatusBarColor;
 
-public class ShowActivity extends AppCompatActivity  {
+public class ShowActivity extends AppCompatActivity {
+    private static final String TAG = "ShowActivity";
     public String date;
     public ListView lv;
     public ArrayList<User> listuser;
+    public android.os.Handler han = new android.os.Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    //Toast.makeText(MainActivity.this,""+date,Toast.LENGTH_LONG).show();
+                    break;
+                case 2:
+                    lv.setAdapter(new IAdapter(ShowActivity.this, listuser));       //调用listview适配器
+                    break;
+            }
+        }
+
+    };
+
     public ArrayList<User> getListuser() {
         return listuser;
     }
-
-    private static final String TAG = "ShowActivity";
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +66,7 @@ public class ShowActivity extends AppCompatActivity  {
         setStatusBarColor(this, 2000, true);
 
         lv = (ListView) findViewById(R.id.lv);
-        final NestedScrollView ss=findViewById(R.id.ScrollView);
+        final NestedScrollView ss = findViewById(R.id.ScrollView);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar1);
         ImageView fruitImageView = (ImageView) findViewById(R.id.fruit_image_view);
@@ -109,7 +97,6 @@ public class ShowActivity extends AppCompatActivity  {
 
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -161,7 +148,6 @@ public class ShowActivity extends AppCompatActivity  {
         // Activity being restarted from stopped state
     }
 
-
     //获取json数据部分
     private void init() {
         new Thread(new Runnable() {
@@ -191,21 +177,6 @@ public class ShowActivity extends AppCompatActivity  {
         }).start();
     }
 
-    public android.os.Handler han = new android.os.Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 1:
-                    //Toast.makeText(MainActivity.this,""+date,Toast.LENGTH_LONG).show();
-                    break;
-                case 2:
-                    lv.setAdapter(new IAdapter(ShowActivity.this, listuser));       //调用listview适配器
-                    break;
-            }
-        }
-
-    };
-
     private void Gsonjx(String date) { //gson解析部分
         JsonParser parser = new JsonParser();
         JsonArray jsonArray = parser.parse(date).getAsJsonArray();
@@ -219,5 +190,5 @@ public class ShowActivity extends AppCompatActivity  {
         message.what = 2;
         han.sendMessage(message);
     }
-    }
+}
 

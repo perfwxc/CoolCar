@@ -7,144 +7,209 @@ import java.io.Serializable;
  */
 
 public class User implements Serializable {
-    private String WD;      //
-    private String XT;
-    private String XYH;
-    private String XYL;
-    private String TIME;
-    private String WZ;
-    private String WD1;
-    private String XT1;
-    private String XYH1;
-    private String XYL1;
-    private String WZ1;
-    private String Name;
-    private String Address;
-    private String Type;
-    private String Num;
-    private String Help;
-    private String ide;
-    private String T1;
-    private String T2;
-    private String XY;
-    private String H2S;
-
-
-    private int imageid;
+    private String userTemperature;         //人体温度
+    private String heartRate;               //心率
+    private String highBloodPressure;       //高血压
+    private String lowBloodPressure;        //低血压
+    private String SaO2;                    //血氧浓度
+    private String H2S;                     //H2S浓度
+    private String Lux;                     //光照强度
+    private String environmentTemperature;  //环境温度
+    private String ambientHumidity;         //环境湿度
+    private String smokeDensity;            //烟雾浓度
+    private String CODensity;               //CO浓度
+    private String alcoholConcentration;    //酒精浓度
+    private String Name;                    //用户名
+    private String Address;                 //用户地址
+    private String Type;                    //用户车型
+    private String telephone;               //电话号码
+    private String emergencyPhone;          //应急电话
+    private String ide;                     //编号
+    private String TIME;                    //测量时间
+    private String timeStamp1;              //时间戳第一部分
+    private String timeStamp2;              //时间戳第二部分
+    private int imageId;
     private int id;
 
-
-    public User(String WD,int imageid, int id) {
-        this.WD = WD;
-        this.imageid = imageid;
-        this.id=id;
+    public User(String userTemperature, int imageId, int id) {
+        this.userTemperature = userTemperature;
+        this.imageId = imageId;
+        this.id = id;
     }
 
-    public String getWD() {
-        return WD;
+    public String getUserTemperature() {
+        return userTemperature;
     }
 
     public String getIde() {
         return ide;
     }
 
-    public String getXT() {
-        return XT;
+    public void setIde(String ide) {
+        this.ide = ide;
     }
 
-    public String getXYH() {
-        return XYH;
+    public String getHeartRate() {
+        return heartRate;
     }
 
-    public String getXYL() {
-        return XYL;
+    public void setHeartRate(String heartRate) {
+        this.heartRate = heartRate;
     }
 
-    public String getWZ() {
-        return WZ;
+    public String getHighBloodPressure() {
+        return highBloodPressure;
     }
 
-    public String getWD1() {
-        return WD1;
+    public void setHighBloodPressure(String highBloodPressure) {
+        this.highBloodPressure = highBloodPressure;
     }
 
-    public String getXT1() {return XT1;}
-
-    public String getXYH1() {
-        return XYH1;
+    public String getLowBloodPressure() {
+        return lowBloodPressure;
     }
 
-    public String getXYL1() {
-        return XYL1;
+    public void setLowBloodPressure(String lowBloodPressure) {
+        this.lowBloodPressure = lowBloodPressure;
     }
 
-    public String getXY() { return XY; }
+    public String getLux() {
+        return Lux;
+    }
+
+    public void setLux(String lux) {
+        this.Lux = lux;
+    }
+
+    public String getEnvironmentTemperature() {
+        return environmentTemperature;
+    }
+
+    public void setEnvironmentTemperature(String environmentTemperature) {
+        this.environmentTemperature = environmentTemperature;
+    }
+
+    public String getAmbientHumidity() {
+        return ambientHumidity;
+    }
+
+    public void setAmbientHumidity(String ambientHumidity) {
+        this.ambientHumidity = ambientHumidity;
+    }
+
+    public String getSmokeDensity() {
+        return smokeDensity;
+    }
+
+    public void setSmokeDensity(String smokeDensity) {
+        this.smokeDensity = smokeDensity;
+    }
+
+    public String getCODensity() {
+        return CODensity;
+    }
+
+    public void setCODensity(String CODensity) {
+        this.CODensity = CODensity;
+    }
+
+    public String getSaO2() {
+        return SaO2;
+    }
+
+    public void setSaO2(String saO2) {
+        SaO2 = saO2;
+    }
 
     public String getTIME() {
         return TIME;
-    }
-
-    public String getH2S() {
-        return H2S;
-    }
-
-    public String getWZ1() { return WZ1; }
-
-    public int getImageId() {
-        return imageid;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {return Name;}
-
-    public String getAddress() {
-        return Address;
-    }
-
-    public String getType() {
-        return Type;
-    }
-
-    public String getHelp() {
-        return Help;
-    }
-
-    public String getNum() { return Num; }
-
-    public String getT1() { return T1; }
-
-    public String getT2() { return T2; }
-
-    public void setWD(String WD) {
-        this.WD = WD;
-    }
-
-    public void setXT(String XT) {
-        this.XT = XT;
-    }
-
-    public void setXYL(String XYL) {
-        this.XYL = XYL;
     }
 
     public void setTIME(String TIME) {
         this.TIME = TIME;
     }
 
-    public void setXYH(String XYH) {
-        this.XYH = XYH;
+    public String getH2S() {
+        return H2S;
     }
 
-    public void setWZ(String WZ) { this.WZ = WZ; }
-
-
-    public void setNum(String Num) {
-        this.Num = Num;
+    public void setH2S(String H2S) {
+        this.H2S = H2S;
     }
 
+    public String getAlcoholConcentration() {
+        return alcoholConcentration;
+    }
 
-    public void setH2S( String a ) { H2S = a; }
+    public void setAlcoholConcentration(String alcoholConcentration) {
+        this.alcoholConcentration = alcoholConcentration;
+    }
+
+    public int getImageId() {
+        return imageId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public String getType() {
+        return Type;
+    }
+
+    public void setType(String type) {
+        Type = type;
+    }
+
+    public String getEmergencyPhone() {
+        return emergencyPhone;
+    }
+
+    public void setEmergencyPhone(String emergencyPhone) {
+        this.emergencyPhone = emergencyPhone;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String Num) {
+        this.telephone = Num;
+    }
+
+    public String getTimeStamp1() {
+        return timeStamp1;
+    }
+
+    public void setTimeStamp1(String timeStamp1) {
+        this.timeStamp1 = timeStamp1;
+    }
+
+    public String getTimeStamp2() {
+        return timeStamp2;
+    }
+
+    public void setTimeStamp2(String timeStamp2) {
+        this.timeStamp2 = timeStamp2;
+    }
+
+    public void setUserTemperature(String userTemperature) {
+        this.userTemperature = userTemperature;
+    }
 }

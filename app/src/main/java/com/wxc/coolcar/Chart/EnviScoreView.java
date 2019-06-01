@@ -60,8 +60,16 @@ public class EnviScoreView extends View {
         this(context, null);
     }
 
-    public void setData (String aa , String bb , String cc , String dd , String ee ,String ff )
-    {
+    public EnviScoreView(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public EnviScoreView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init();
+    }
+
+    public void setData(String aa, String bb, String cc, String dd, String ee, String ff) {
         float a = Float.parseFloat(aa);
         float a2 = Float.parseFloat(bb);
         float b = Float.parseFloat(cc);
@@ -70,108 +78,99 @@ public class EnviScoreView extends View {
         float e = Float.parseFloat(ff);
         int A1 = 0;//温度评分
 
-        if(a == 25) A1 =20;
-        if(a == 24 || a == 26) A1 =19;
-        if(a == 23 || a == 27) A1 =18;
-        if(a == 22 || a == 28) A1 =17;
-        if(a == 21 || a == 29) A1 =16;
-        if(a == 20 || a == 30) A1=15;
-        if(a == 19 || a == 31) A1 =14;
-        if(a == 18 || a == 32) A1 =13;
-        if(a == 17 || a == 33) A1 =12;
-        if(a == 16 || a == 34) A1 =11;
-        if(a == 15 || a == 35) A1 =10;
-        if(a == 14 || a == 36) A1 =9;
-        if(a == 13 || a == 37) A1 =8;
-        if(a == 12 || a == 38) A1 =7;
-        if(a == 11 || a == 39) A1 =6;
-        if(a == 10 || a == 40) A1 =5;
-        if(a == 9 || a == 41) A1 =4;
-        if(a == 8 || a == 42) A1 =3;
-        if(a == 7 || a == 43) A1 =2;
-        if(a == 6 || a == 44) A1 =1;
-        if(a < 6 || a > 44) A1 = 0;
+        if (a == 25) A1 = 20;
+        if (a == 24 || a == 26) A1 = 19;
+        if (a == 23 || a == 27) A1 = 18;
+        if (a == 22 || a == 28) A1 = 17;
+        if (a == 21 || a == 29) A1 = 16;
+        if (a == 20 || a == 30) A1 = 15;
+        if (a == 19 || a == 31) A1 = 14;
+        if (a == 18 || a == 32) A1 = 13;
+        if (a == 17 || a == 33) A1 = 12;
+        if (a == 16 || a == 34) A1 = 11;
+        if (a == 15 || a == 35) A1 = 10;
+        if (a == 14 || a == 36) A1 = 9;
+        if (a == 13 || a == 37) A1 = 8;
+        if (a == 12 || a == 38) A1 = 7;
+        if (a == 11 || a == 39) A1 = 6;
+        if (a == 10 || a == 40) A1 = 5;
+        if (a == 9 || a == 41) A1 = 4;
+        if (a == 8 || a == 42) A1 = 3;
+        if (a == 7 || a == 43) A1 = 2;
+        if (a == 6 || a == 44) A1 = 1;
+        if (a < 6 || a > 44) A1 = 0;
 
         int A2 = 0;
-        int z = (int)a2;
-        if(z == 55) A2 = 20;
-        if(z == 54 || z == 56) A2 = 19;
-        if(z == 53 || z == 57) A2 = 18;
-        if(z == 52 || z == 58) A2 = 17;
-        if(z == 51 || z == 59) A2 = 16;
-        if(z == 50 || z == 60) A2 = 15;
-        if(z == 49 || z == 61) A2 = 14;
-        if(z == 48 || z == 62) A2 = 13;
-        if(z == 47 || z == 63) A2 = 12;
-        if(z == 46 || z == 64) A2 = 11;
-        if(z == 45 || z == 65) A2 = 10;
-        if(z == 44 || z == 66) A2 = 9;
-        if(z == 43 || z == 67) A2 = 8;
-        if(z == 42 || z == 68) A2 = 7;
-        if(z == 41 || z == 69) A2 = 6;
-        if(z == 40 || z == 70) A2 = 5;
-        if(z == 39 || z == 71) A2 = 4;
-        if(z == 38 || z == 72) A2 = 3;
-        if(z == 37 || z == 73) A2 = 2;
-        if(z == 36 || z == 74) A2 = 1;
-        if(z<36 || z >74)  A2 = 0;
-        int A = A1>A2?A2:A1;
+        int z = (int) a2;
+        if (z == 55) A2 = 20;
+        if (z == 54 || z == 56) A2 = 19;
+        if (z == 53 || z == 57) A2 = 18;
+        if (z == 52 || z == 58) A2 = 17;
+        if (z == 51 || z == 59) A2 = 16;
+        if (z == 50 || z == 60) A2 = 15;
+        if (z == 49 || z == 61) A2 = 14;
+        if (z == 48 || z == 62) A2 = 13;
+        if (z == 47 || z == 63) A2 = 12;
+        if (z == 46 || z == 64) A2 = 11;
+        if (z == 45 || z == 65) A2 = 10;
+        if (z == 44 || z == 66) A2 = 9;
+        if (z == 43 || z == 67) A2 = 8;
+        if (z == 42 || z == 68) A2 = 7;
+        if (z == 41 || z == 69) A2 = 6;
+        if (z == 40 || z == 70) A2 = 5;
+        if (z == 39 || z == 71) A2 = 4;
+        if (z == 38 || z == 72) A2 = 3;
+        if (z == 37 || z == 73) A2 = 2;
+        if (z == 36 || z == 74) A2 = 1;
+        if (z < 36 || z > 74) A2 = 0;
+        int A = A1 > A2 ? A2 : A1;
         data[4] = A;
 
         int B = 0;
-        if(b >= 0 && b < 1000) B = 20;
-        if(b >= 1000 && b < 2000) B = 18;
-        if(b >= 2000 && b < 3000) B = 16;
-        if(b >= 3000 && b < 4000) B = 14;
-        if(b >= 4000 && b < 5000) B = 10;
-        if(b >= 5000 && b < 6000) B = 6;
-        if(b >= 3000) B = 0;
+        if (b >= 0 && b < 1000) B = 20;
+        if (b >= 1000 && b < 2000) B = 18;
+        if (b >= 2000 && b < 3000) B = 16;
+        if (b >= 3000 && b < 4000) B = 14;
+        if (b >= 4000 && b < 5000) B = 10;
+        if (b >= 5000 && b < 6000) B = 6;
+        if (b >= 3000) B = 0;
         data[3] = B;
 
         int C = 0;
-        if(c >= 0 && c < 1000) 	C = 20;
-        if(c >= 1000 && c < 2000) C = 18;
-        if(c >= 2000 && c < 3000) C = 16;
-        if(c >= 3000 && c < 4000) C = 14;
-        if(c >= 4000 && c < 5000) C = 10;
-        if(c >= 5000 && c < 6000) C = 6;
-        if(c >= 3000) C = 0;
+        if (c >= 0 && c < 1000) C = 20;
+        if (c >= 1000 && c < 2000) C = 18;
+        if (c >= 2000 && c < 3000) C = 16;
+        if (c >= 3000 && c < 4000) C = 14;
+        if (c >= 4000 && c < 5000) C = 10;
+        if (c >= 5000 && c < 6000) C = 6;
+        if (c >= 3000) C = 0;
         data[0] = C;
 
 
         int D = 0;
-        if(d >= 0 && d < 1000) D = 20;
-        if(d >= 1000 && d < 2000) D = 18;
-        if(d >= 2000 && d < 3000) D = 16;
-        if(d >= 3000 && d < 4000) D = 14;
-        if(d >= 4000 && d < 5000) D = 10;
-        if(d >= 5000 && d < 6000) D = 6;
-        if(d >= 3000) D = 0;
+        if (d >= 0 && d < 1000) D = 20;
+        if (d >= 1000 && d < 2000) D = 18;
+        if (d >= 2000 && d < 3000) D = 16;
+        if (d >= 3000 && d < 4000) D = 14;
+        if (d >= 4000 && d < 5000) D = 10;
+        if (d >= 5000 && d < 6000) D = 6;
+        if (d >= 3000) D = 0;
         data[1] = D;
 
         int E = 0;
-        if(e >= 30 && e < 1000) E = 20;
-        if((e >= 28 && e < 30) || (e >=1000 && e < 1500)) E = 18;
-        if((e >= 26 && e < 28) || (e >=1500 && e < 2000)) E = 16;
-        if((e >= 24 && e < 26) || (e >=2000 && e < 2500)) E = 14;
-        if((e >= 22 && e < 24) || (e >=2500 && e < 3000)) E = 12;
-        if((e >= 20 && e < 22) || (e >=3000 && e < 3500)) E = 10;
-        if((e >= 18 && e < 20) || (e >=3500 && e < 4000)) E = 8;
-        if((e >= 16 && e < 18) || (e >=4000 && e < 4500)) E = 6;
-        if((e >= 14 && e < 16) || (e >=4500 && e < 5000)) E = 4;
-        if((e >= 12 && e < 14) || (e >=5000 && e < 5500)) E = 2;
-        if((e >= 10 && e < 12) || (e >=5500 && e < 6000)) E = 1;
-        if(e <10 || e >= 6000) E = 0;
+        if (e >= 30 && e < 1000) E = 20;
+        if ((e >= 28 && e < 30) || (e >= 1000 && e < 1500)) E = 18;
+        if ((e >= 26 && e < 28) || (e >= 1500 && e < 2000)) E = 16;
+        if ((e >= 24 && e < 26) || (e >= 2000 && e < 2500)) E = 14;
+        if ((e >= 22 && e < 24) || (e >= 2500 && e < 3000)) E = 12;
+        if ((e >= 20 && e < 22) || (e >= 3000 && e < 3500)) E = 10;
+        if ((e >= 18 && e < 20) || (e >= 3500 && e < 4000)) E = 8;
+        if ((e >= 16 && e < 18) || (e >= 4000 && e < 4500)) E = 6;
+        if ((e >= 14 && e < 16) || (e >= 4500 && e < 5000)) E = 4;
+        if ((e >= 12 && e < 14) || (e >= 5000 && e < 5500)) E = 2;
+        if ((e >= 10 && e < 12) || (e >= 5500 && e < 6000)) E = 1;
+        if (e < 10 || e >= 6000) E = 0;
         data[2] = E;
-    }
-
-    public EnviScoreView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public EnviScoreView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init();
     }
 
     private void init() {

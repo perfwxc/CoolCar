@@ -98,7 +98,8 @@ public class Tg {
 
         private String mobile;
         private String nationcode;
-        TelBean(String mobile,String nationcode){
+
+        TelBean(String mobile, String nationcode) {
             this.mobile = mobile;
             this.nationcode = nationcode;
         }

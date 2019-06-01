@@ -1,4 +1,5 @@
 package com.wxc.coolcar.Main;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -151,6 +152,7 @@ public class MPermissionsActivity extends AppCompatActivity {
 
     /**
      * 权限获取失败
+     *
      * @param requestCode
      */
     public void permissionFail(int requestCode) {

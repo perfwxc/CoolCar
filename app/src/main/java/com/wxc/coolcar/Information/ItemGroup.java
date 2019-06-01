@@ -135,11 +135,6 @@ public class ItemGroup extends FrameLayout implements View.OnClickListener {
         jtRightIv.setVisibility(showJtIcon ? View.VISIBLE : View.GONE);  //设置向右的箭头图标是否可见
     }
 
-    //Item点击事件监听
-    public interface ItemOnClickListener {
-        void onItemClick(View v);
-    }
-
     /**
      * 供外部调用的方法，设置Item的点击事件
      *
@@ -159,7 +154,6 @@ public class ItemGroup extends FrameLayout implements View.OnClickListener {
         contentEdt.setText(text);
     }
 
-
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -175,5 +169,11 @@ public class ItemGroup extends FrameLayout implements View.OnClickListener {
                 clearIv.setVisibility(GONE);
                 break;
         }
+    }
+
+
+    //Item点击事件监听
+    public interface ItemOnClickListener {
+        void onItemClick(View v);
     }
 }

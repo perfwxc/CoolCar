@@ -26,9 +26,6 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Timer;
-import java.util.TimerTask;
-
-import static android.content.Context.POWER_SERVICE;
 
 
 public class VoiceActivity extends MPermissionsActivity {
@@ -40,6 +37,7 @@ public class VoiceActivity extends MPermissionsActivity {
     private Timer timer = null;   //计时器
     private PowerLED powerLED;   //闪光灯的基类
     private Vibrator vibrator; //震动
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +52,7 @@ public class VoiceActivity extends MPermissionsActivity {
         mWakelock = pm.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.FULL_WAKE_LOCK, "WakeLock");
         powerLED = new PowerLED(this);
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -77,11 +76,11 @@ public class VoiceActivity extends MPermissionsActivity {
                         Log.e("------", "唤醒成功, 唤醒词: " + word + "\r\n");
                         if (word.equals("车载精灵")) {
                             mWakelock.acquire();//唤醒屏幕
-                      //      mediaPlayer1.seekTo(0);  //音乐从头开始
-                      //      mediaPlayer1.start();  //播放音乐
+                            //      mediaPlayer1.seekTo(0);  //音乐从头开始
+                            //      mediaPlayer1.start();  //播放音乐
                             vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-                            long [] pattern = {100,400,100,400}; // 停止 开启 停止 开启
-                            vibrator.vibrate(pattern,-1); //重复两次上面的pattern 如果只想震动一次，index设为-1
+                            long[] pattern = {100, 400, 100, 400}; // 停止 开启 停止 开启
+                            vibrator.vibrate(pattern, -1); //重复两次上面的pattern 如果只想震动一次，index设为-1
                             /**
                              * 计时器
                              * 1000标示这个计时器最先打开后延迟1s执行
@@ -92,9 +91,9 @@ public class VoiceActivity extends MPermissionsActivity {
 
                         } else if (word.equals("健康助手")) {
                             // 通过包名获取要跳转的app，创建intent对象
-                          //  Intent intent = getPackageManager().getLaunchIntentForPackage("com.tencent.mm");
+                            //  Intent intent = getPackageManager().getLaunchIntentForPackage("com.tencent.mm");
                             // 这里如果intent为空，就说名没有安装要跳转的应用嘛
-                            Intent intent =new Intent (VoiceActivity.this, MActivity.class);
+                            Intent intent = new Intent(VoiceActivity.this, MActivity.class);
                             if (intent != null) {
                                 // 这里跟Activity传递参数一样的嘛，不要担心怎么传递参数，还有接收参数也是跟Activity和Activity传参数一样
                                 startActivity(intent);
@@ -123,7 +122,8 @@ public class VoiceActivity extends MPermissionsActivity {
 
         // 3) 通知唤醒管理器, 启动唤醒功能
         HashMap params = new HashMap();
-        params.put("kws-file", "assets:///WakeUp2.bin"); // 设置唤醒资源, 唤醒资源请到 http://yuyin.baidu.com/wake#m4 来评估和导出
+        params.put("kws-file", "assets:///WakeUp2.bin");
+        // 设置唤醒资源, 唤醒资源请到 http://yuyin.baidu.com/wake#m4 来评估和导出
         mWpEventManager.send("wp.start", new JSONObject(params).toString(), null, 0, 0);
     }
 
@@ -133,8 +133,9 @@ public class VoiceActivity extends MPermissionsActivity {
         super.onDestroy();
         // 停止唤醒监听
         mWpEventManager.send("wp.stop", null, null, 0, 0);
-//        mediaPlayer1.stop();
-//        mediaPlayer1.release();  //释放mediaPlayer
+        //        mediaPlayer1.stop();
+        //        mediaPlayer1.release();
+        // 释放mediaPlayer
         mWakelock.release();//释放
         timer.cancel();  //结束计时
         powerLED.Destroy();//释放相机的闪光灯

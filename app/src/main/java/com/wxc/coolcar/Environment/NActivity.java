@@ -1,14 +1,11 @@
 package com.wxc.coolcar.Environment;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.StrictMode;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.NestedScrollView;
@@ -16,17 +13,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baidu.tts.auth.AuthInfo;
@@ -39,13 +30,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.wxc.coolcar.Chart.ChartActivity;
-import com.wxc.coolcar.Environment.Adapter2;
 import com.wxc.coolcar.Health.Adapter;
-import com.wxc.coolcar.Health.Detail;
-import com.wxc.coolcar.Health.MActivity;
 import com.wxc.coolcar.Information.JSONParser;
-import com.wxc.coolcar.Main.MainActivity;
 import com.wxc.coolcar.R;
 import com.wxc.coolcar.User.User;
 
@@ -75,17 +61,8 @@ import static com.githang.statusbar.StatusBarCompat.setStatusBarColor;
 import static com.igexin.sdk.GTServiceManager.context;
 
 public class NActivity extends AppCompatActivity implements SpeechSynthesizerListener {
-    public String date;
-    public ListView lv;
-    public ArrayList<User> listuser;
+    public static final int MY_ID = R.drawable.timg1;
     private static final String TAG = "NActivity";
-    private String url = "https://perfwxc.cn/coolcar/json/delete.php";
-    boolean stopThread=false;
-    protected String appId = "11319692";    //百度语音合成设别号0
-    protected String appKey = "iRwaZnUB2fiGI7i1fdMttAld";
-    protected String secretKey = "SjNwKCkIItx4ABRejGSP9kciwbQc51VQ";
-    private SpeechSynthesizer mSpeechSynthesizer;//百度语音合成客户端
-    private String mSampleDirPath;
     private static final String SAMPLE_DIR_NAME = "baiduTTS";   //导入百度语音合成相关文件
     private static final String SPEECH_FEMALE_MODEL_NAME = "bd_etts_speech_female.dat";
     private static final String SPEECH_MALE_MODEL_NAME = "bd_etts_speech_male.dat";
@@ -94,66 +71,182 @@ public class NActivity extends AppCompatActivity implements SpeechSynthesizerLis
     private static final String ENGLISH_SPEECH_FEMALE_MODEL_NAME = "bd_etts_speech_female_en.dat";
     private static final String ENGLISH_SPEECH_MALE_MODEL_NAME = "bd_etts_speech_male_en.dat";
     private static final String ENGLISH_TEXT_MODEL_NAME = "bd_etts_text_en.dat";
-    public static final int MY_ID = R.drawable.timg1;
+    public String date;
+    public ListView lv;
+    public ArrayList<User> listuser;
     public ProgressDialog mProgressDialog;
+    protected String appId = "11319692";    //百度语音合成设别号0
+    protected String appKey = "iRwaZnUB2fiGI7i1fdMttAld";
+    protected String secretKey = "SjNwKCkIItx4ABRejGSP9kciwbQc51VQ";
+    boolean stopThread = false;
+    Timer timer = new Timer();//动态刷新数据
+    private String url = "https://perfwxc.cn/coolcar/json/delete.php";
+    private SpeechSynthesizer mSpeechSynthesizer;//百度语音合成客户端
+    private String mSampleDirPath;
     private int NUMBER_OF_CORES = Runtime.getRuntime().availableProcessors();
     private int KEEP_ALIVE_TIME = 1;
     private TimeUnit KEEP_ALIVE_TIME_UNIT = TimeUnit.SECONDS;
     private ExecutorService executorService = new ThreadPoolExecutor(NUMBER_OF_CORES, NUMBER_OF_CORES * 2, KEEP_ALIVE_TIME, KEEP_ALIVE_TIME_UNIT, new LinkedBlockingDeque<Runnable>(128));
+    private Adapter.MyClickListener nListener = new Adapter.MyClickListener() {
+        @Override
+        public void myOnClick(int position, View v) {
+            String environmentTemperature = listuser.get(position).getEnvironmentTemperature();
+            String ambientHumidity = listuser.get(position).getAmbientHumidity();
+            String smokeDensity = listuser.get(position).getSmokeDensity();
+            String CODensity = listuser.get(position).getCODensity();
+            String H2S = listuser.get(position).getH2S();
+            String alcoholConcentration = listuser.get(position).getAlcoholConcentration();
+
+            Intent IntentToEetail = new Intent(NActivity.this, Eetail.class);
+
+            IntentToEetail.putExtra("ienvironmentTemperature", environmentTemperature);
+            IntentToEetail.putExtra("iambientHumidity", ambientHumidity);
+            IntentToEetail.putExtra("ismokeDensity", smokeDensity);
+            IntentToEetail.putExtra("iCODensity", CODensity);
+            IntentToEetail.putExtra("iH2S", H2S);
+            IntentToEetail.putExtra("ialcoholConcentration", alcoholConcentration);
+            startActivity(IntentToEetail);
+        }
 
 
-    Timer timer = new Timer();//动态刷新数据
+    };
+    private Adapter.MyClickListener mListener = new Adapter.MyClickListener() {
+        @Override
+        public void myOnClick(int position, View v) {
+            int environmentTemperature = Integer.parseInt(listuser.get(position).getEnvironmentTemperature());
+            double ambientHumidity = Double.valueOf(listuser.get(position).getAmbientHumidity());
+            int smokeDensity = Integer.parseInt(listuser.get(position).getSmokeDensity());
+            int CODensity = Integer.parseInt(listuser.get(position).getCODensity());
+            int H2S = Integer.parseInt(listuser.get(position).getH2S());
+            int Lux = Integer.parseInt(listuser.get(position).getLux());
+            SpeakAdvice(environmentTemperature, ambientHumidity, smokeDensity, CODensity, H2S, Lux);
+            if (45 < ambientHumidity && ambientHumidity < 70) {
+                Toast.makeText(NActivity.this, "您现在所处的环境湿度十分舒适！", Toast.LENGTH_SHORT).show();
+            }
+            if (ambientHumidity <= 45) {
+                Toast.makeText(NActivity.this, "您所处的环境过于干燥。", Toast.LENGTH_SHORT).show();
+            }
+            if (ambientHumidity >= 70) {
+                Toast.makeText(NActivity.this, "您所处的环境太潮湿了", Toast.LENGTH_SHORT).show();
+            }
+            if (5 < environmentTemperature && environmentTemperature < 40) {
+                Toast.makeText(NActivity.this, "环境的温度适宜！", Toast.LENGTH_SHORT).show();
+            }
+            if (environmentTemperature <= 5) {
+                Toast.makeText(NActivity.this, "车内温度过低！", Toast.LENGTH_SHORT).show();
+            }
+            if (environmentTemperature >= 40) {
+                Toast.makeText(NActivity.this, "车内温度过高，建议您开下空调！", Toast.LENGTH_SHORT).show();
+            }
+            if (smokeDensity < 5000) {
+                Toast.makeText(NActivity.this, "车内的空气烟雾浓度恰到好处！", Toast.LENGTH_SHORT).show();
+            }
+            if (smokeDensity >= 5000) {
+                Toast.makeText(NActivity.this, "车内的空气烟雾浓度偏高，请开窗通风！", Toast.LENGTH_SHORT).show();
+            }
+            if (CODensity < 100) {
+                Toast.makeText(NActivity.this, "一氧化碳浓度不高。", Toast.LENGTH_SHORT).show();
+            }
+            if (CODensity >= 100) {
+                Toast.makeText(NActivity.this, "车内的一氧化碳浓度过高，请及时通风！", Toast.LENGTH_SHORT).show();
+            }
+            if (Lux == 1) {
+                Toast.makeText(NActivity.this, "车内的光照强度不高，适宜开车！", Toast.LENGTH_SHORT).show();
+            }
+            if (Lux == 0) {
+                Toast.makeText(NActivity.this, "车内光照强度过高！请关窗。", Toast.LENGTH_SHORT).show();
+            }
+
+
+        }
+
+
+    };
+    private Handler mHandler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+            //若工作完成，取消动画，初始化界面
+
+            switch (msg.what) {
+                case 1:
+                    mProgressDialog.cancel();
+                    break;
+                case 2:
+                    lv.setAdapter(new Adapter2(NActivity.this, listuser, mListener, nListener));//调用listview适配器
+
+
+                    Adapter2 environmentAdapter = new Adapter2(NActivity.this, listuser, mListener, nListener);
+                    lv.setAdapter(environmentAdapter);
+                    setListViewHeightBasedOnChildren(lv);
+
+
+                    lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                        public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+                            final int aaa = listuser.get(position).getId();
+
+                            new Thread(new Runnable() {
+                                public void run() {
+                                    List<NameValuePair> params = new ArrayList<NameValuePair>();
+                                    params.add(new BasicNameValuePair("name", String.valueOf(aaa)));
+                                    JSONParser jsonParser = new JSONParser();
+                                    try {
+                                        JSONObject json = jsonParser.makeHttpRequest(url, "POST", params);
+                                        Log.v("uploadsucceed", "uploadsucceed");
+
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                            }).start();
+
+                            Toast.makeText(NActivity.this, "数据已删除！", Toast.LENGTH_SHORT).show();
+
+                            return true;
+                        }
+                    });
+
+
+                    lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            double environmentTemperature = Double.parseDouble(listuser.get(position).getEnvironmentTemperature());
+                            double ambientHumidity = Double.parseDouble(listuser.get(position).getAmbientHumidity());
+                            double smokeDensity = Double.parseDouble(listuser.get(position).getSmokeDensity());
+                            double CODensity = Double.parseDouble(listuser.get(position).getCODensity());
+                            int H2S = Integer.parseInt(listuser.get(position).getH2S());
+                            Toast.makeText(NActivity.this, "车内温度为" + environmentTemperature + "摄氏度"
+                                    + "\n 车内湿度为相对湿度百分之" + ambientHumidity
+                                    + "\n 烟雾浓度为" + smokeDensity + "ppm"
+                                    + "\n 光照强度正常"
+                                    + "\n 一氧化碳浓度为" + CODensity + "ppm"
+                                    + "\n 硫化氢浓度为" + H2S + "ppm", Toast.LENGTH_LONG).show();
+
+                            mSpeechSynthesizer.speak(
+                                    "车内温度为" + environmentTemperature + "摄氏度"
+                                            + "。。车内湿度为相对湿度百分之" + ambientHumidity
+                                            + "。。烟雾浓度为" + smokeDensity + "ppm"
+                                            + "。。光照强度正常"
+                                            + "。。一氧化碳浓度为" + CODensity + "ppm"
+                                            + "\n 硫化氢浓度为" + H2S + "ppm"
+
+                            );
+
+                        }
+                    });
+
+                    break;
+
+            }
+        }
+
+    };
     TimerTask task = new TimerTask() {
         public void run() {
             if (!stopThread)    //执行线程标志
                 init();          //刷新执行函数
 
-           }
-    };
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.recycler_main);
-        setStatusBarColor(this, 2000, true);
-        lv = (ListView) findViewById(R.id.lv);
-        final NestedScrollView ss=findViewById(R.id.ScrollView);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar1);
-        ImageView fruitImageView = (ImageView) findViewById(R.id.fruit_image_view);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stopThread=true;
-                finish();            }
-        });
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab1);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(NActivity.this, "车内环境信息暂未设置折线图分析~", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        collapsingToolbar.setTitle("车内环境数据如下：");
-        Glide.with(this).load(MY_ID).into(fruitImageView);
-        //创建ProgressDialog
-        createProgressDialog();
-        //启动线程
-        executorService.execute(mRunnable);
-        timer.schedule(task, 1000*4, 1000 * 10); //启动timer，设置任务周期
-
-    }
-
-
+    };
     /**
      * 线程
      */
@@ -177,10 +270,75 @@ public class NActivity extends AppCompatActivity implements SpeechSynthesizerLis
             mHandler.sendMessage(msg);
 
 
-
         }
     };
 
+    //动态设置LitView的高度，使得每个条目显示完全
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        //获得adapter
+        Adapter2 adapter = (Adapter2) listView.getAdapter();
+        if (adapter == null) {
+            return;
+        }
+
+        int totalHeight = 0;
+        for (int i = 0; i < adapter.getCount(); i++) {
+            View listItem = adapter.getView(i, null, listView);
+            listItem.measure(0, 0);
+            //计算总高度
+            totalHeight += listItem.getMeasuredHeight();
+            totalHeight += 5;
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        //计算分割线高度
+        params.height = totalHeight + (listView.getDividerHeight() * (adapter.getCount() - 1));
+        //给listview设置高度
+        listView.setLayoutParams(params);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.recycler_main);
+        setStatusBarColor(this, 2000, true);
+        lv = (ListView) findViewById(R.id.lv);
+        final NestedScrollView ss = findViewById(R.id.ScrollView);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar1);
+        ImageView fruitImageView = (ImageView) findViewById(R.id.fruit_image_view);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopThread = true;
+                finish();
+            }
+        });
+
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab1);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(NActivity.this, "车内环境信息暂未设置折线图分析~", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+        collapsingToolbar.setTitle("车内环境数据如下：");
+        Glide.with(this).load(MY_ID).into(fruitImageView);
+        //创建ProgressDialog
+        createProgressDialog();
+        //启动线程
+        executorService.execute(mRunnable);
+        timer.schedule(task, 1000 * 4, 1000 * 10); //启动timer，设置任务周期
+
+    }
 
     /**
      * 创建ProrgressDialog
@@ -194,166 +352,12 @@ public class NActivity extends AppCompatActivity implements SpeechSynthesizerLis
         mProgressDialog.show();
     }
 
-
-    private Handler mHandler = new Handler() {
-        public void handleMessage(android.os.Message msg) {
-            //若工作完成，取消动画，初始化界面
-
-            switch (msg.what) {
-                case 1:
-                    mProgressDialog.cancel();
-                    break;
-                case 2:
-                    lv.setAdapter(new Adapter2(NActivity.this, listuser,mListener , nListener));//调用listview适配器
-
-
-                    Adapter2 aa= new Adapter2(NActivity.this,listuser,mListener,nListener);
-                    lv.setAdapter(aa);
-                    setListViewHeightBasedOnChildren(lv);
-
-
-                    lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
-                        public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-                            final int aaa = listuser.get(position).getId();
-
-                            new Thread(new Runnable() {
-                                public void run() {
-                                    List<NameValuePair> params = new ArrayList<NameValuePair>();
-                                    params.add(new BasicNameValuePair("name", String.valueOf(aaa)));
-                                    JSONParser jsonParser = new JSONParser();
-                                    try{
-                                        JSONObject json = jsonParser.makeHttpRequest(url,"POST", params);
-                                        Log.v("uploadsucceed", "uploadsucceed");
-
-                                    }catch(Exception e){
-                                        e.printStackTrace();
-                                    }
-                                }
-
-                            }).start();
-
-                            Toast.makeText(NActivity.this, "数据已删除！", Toast.LENGTH_SHORT).show();
-
-                            return true;
-                        }
-                    });
-
-
-
-                    lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            double a=Double.parseDouble(listuser.get(position).getWD1());
-                            double b=Double.parseDouble(listuser.get(position).getXT1());
-                            double c=Double.parseDouble(listuser.get(position).getXYH1());
-                            double e=Double.parseDouble(listuser.get(position).getXYL1());
-                            int d=Integer.parseInt(listuser.get(position).getWZ1());
-                            Toast.makeText(NActivity.this, "车内温度为"+a+"摄氏度"
-                                    +"\n 车内湿度为相对湿度百分之"+b
-                                    +"\n 烟雾浓度为"+c+"ppm"
-                                    +"\n 一氧化碳浓度为"+d+"ppm"
-                                    +"\n 光照强度正常", Toast.LENGTH_LONG).show();
-
-                            mSpeechSynthesizer.speak(
-                                    "车内温度为"+a+"摄氏度"
-                                            +"。。车内湿度为相对湿度百分之"+b
-                                            +"。。烟雾浓度为"+c+"ppm"
-                                            +"。。一氧化碳浓度为"+d+"ppm"
-                                            +"。。光照强度正常"
-                            );
-
-                        }
-                    });
-
-                    break;
-
-            }
-        }
-
-    };
-
-    private Adapter.MyClickListener nListener = new Adapter.MyClickListener() {
-        @Override
-        public void myOnClick(int position, View v)
-        {
-            String a = listuser.get(position).getWD1();
-            String b = listuser.get(position).getXT1();
-            String c = listuser.get(position).getXYH1();
-            String d = listuser.get(position).getXYL1();
-            String e = listuser.get(position).getH2S();
-            String f = listuser.get(position).getWZ1();
-
-            Intent in= new Intent(NActivity.this, Eetail.class);
-
-            in.putExtra("ia", a);
-            in.putExtra("ib", b);
-            in.putExtra("ic", c);
-            in.putExtra("id", d);
-            in.putExtra("ie", e);
-            in.putExtra("if", f);
-            startActivity(in);
-        }
-
-
-    };
-    private Adapter.MyClickListener mListener = new Adapter.MyClickListener() {
-        @Override
-        public void myOnClick(int position, View v) {
-            int a=  Integer.parseInt(listuser.get(position).getWD1());
-            double b=Double.valueOf(listuser.get(position).getXT1());
-            int c=Integer.parseInt(listuser.get(position).getXYH1());
-            int e=Integer.parseInt(listuser.get(position).getXYL1());
-            int f=Integer.parseInt(listuser.get(position).getH2S());
-            int d=Integer.parseInt(listuser.get(position).getWZ());
-            six666(a,b,c,e,f,d);
-            if(45<b&&b<70) {
-                Toast.makeText(NActivity.this, "您现在所处的环境湿度十分舒适！", Toast.LENGTH_SHORT).show();
-            }
-            if(b<=45) {
-                Toast.makeText(NActivity.this, "您所处的环境过于干燥。", Toast.LENGTH_SHORT).show();
-            }
-            if(b>=70) {
-                Toast.makeText(NActivity.this, "您所处的环境太潮湿了", Toast.LENGTH_SHORT).show();
-            }
-            if(5<a&&a<40) {
-                Toast.makeText(NActivity.this, "环境的温度适宜！", Toast.LENGTH_SHORT).show();
-            }
-            if(a<=5)
-            {Toast.makeText(NActivity.this, "车内温度过低！", Toast.LENGTH_SHORT).show();
-             }
-            if(a>=40)
-            {Toast.makeText(NActivity.this, "车内温度过高，建议您开下空调！", Toast.LENGTH_SHORT).show();
-               }
-            if(c<5000)
-            {Toast.makeText(NActivity.this, "车内的空气烟雾浓度恰到好处！", Toast.LENGTH_SHORT).show();
-               }
-            if(c>=5000)
-            {Toast.makeText(NActivity.this, "车内的空气烟雾浓度偏高，请开窗通风！", Toast.LENGTH_SHORT).show();
-                }
-            if(e<100)
-            {Toast.makeText(NActivity.this, "一氧化碳浓度不高。", Toast.LENGTH_SHORT).show();}
-            if(e>=100)
-            {Toast.makeText(NActivity.this, "车内的一氧化碳浓度过高，请及时通风！", Toast.LENGTH_SHORT).show();}
-            if(d==1)
-            {Toast.makeText(NActivity.this, "车内的光照强度不高，适宜开车！", Toast.LENGTH_SHORT).show();}
-            if(d==0)
-            {Toast.makeText(NActivity.this, "车内光照强度过高！请关窗。", Toast.LENGTH_SHORT).show();
-            }
-
-
-
-
-        }
-
-
-    };
-
-
-    public void six666 (int a1,double a2,int b, int c,int d ,int e) {
-
+    public void SpeakAdvice(int environmentTemperature, double ambientHumidity, int smokeDensity,
+                            int CODensity, int H2S, int Lux) {
+        //environmentTemperature, ambientHumidity, smokeDensity, CODensity, H2S, Lux)
         int[] flag = new int[6];
 
-        String[] string = new String[]{
+        String[] advice = new String[]{
                 "开窗通风",
                 "必要时空调降温",
                 "必要时空调升温",
@@ -371,19 +375,19 @@ public class NActivity extends AppCompatActivity implements SpeechSynthesizerLis
                 ".易驾为您提供最舒适的环境",
                 "车内环境良好，祝您驾驶愉快！"
         };
-        int[] aflag = new int[string.length];
-//	System.out.println(s.length);
+        int[] aflag = new int[advice.length];
+        //	System.out.println(s.length);
         int count = 0;
 
-        if (a1 < 22) flag[0] = -1;
-        if (a1 > 28) flag[0] = 1;
-        if (a2 < 30) flag[1] = -1;
-        if (a2 > 75) flag[1] = 1;
-        if (b > 4000) flag[2] = 1;
-        if (c > 4000) flag[3] = 1;
-        if (d > 4000) flag[4] = 1;
-        if (e <= 15) flag[5] = -1;
-        if (e > 4000) flag[5] = 1;
+        if (environmentTemperature < 22) flag[0] = -1;
+        if (environmentTemperature > 28) flag[0] = 1;
+        if (ambientHumidity < 30) flag[1] = -1;
+        if (ambientHumidity > 75) flag[1] = 1;
+        if (smokeDensity > 4000) flag[2] = 1;
+        if (CODensity > 4000) flag[3] = 1;
+        if (H2S > 4000) flag[4] = 1;
+        if (Lux <= 15) flag[5] = -1;
+        if (Lux > 4000) flag[5] = 1;
         for (int i = 0; i <= 5; i++) {
             if (flag[i] == 0) continue;
             if (flag[i] == 1) {
@@ -440,42 +444,16 @@ public class NActivity extends AppCompatActivity implements SpeechSynthesizerLis
             }
         }
         if (count == 0) {
-            mSpeechSynthesizer.speak(string[15]);
+            mSpeechSynthesizer.speak(advice[15]);
         } else {
-            mSpeechSynthesizer.speak(string[13]);
+            mSpeechSynthesizer.speak(advice[13]);
             for (int i = 0; i < aflag.length; i++) {
                 if (aflag[i] == 1) {
-                    mSpeechSynthesizer.speak(string[i]);
+                    mSpeechSynthesizer.speak(advice[i]);
                 }
             }
-            mSpeechSynthesizer.speak(string[14]);
+            mSpeechSynthesizer.speak(advice[14]);
         }
-    }
-
-
-
-    //动态设置LitView的高度，使得每个条目显示完全
-    public static void setListViewHeightBasedOnChildren(ListView listView) {
-        //获得adapter
-        Adapter2 adapter = (Adapter2) listView.getAdapter();
-        if (adapter == null) {
-            return;
-        }
-
-        int totalHeight = 0;
-        for (int i = 0; i < adapter.getCount(); i++) {
-            View listItem = adapter.getView(i, null, listView);
-            listItem.measure(0, 0);
-            //计算总高度
-            totalHeight += listItem.getMeasuredHeight();
-            totalHeight += 5;
-        }
-
-        ViewGroup.LayoutParams params = listView.getLayoutParams();
-        //计算分割线高度
-        params.height = totalHeight + (listView.getDividerHeight() * (adapter.getCount() - 1));
-        //给listview设置高度
-        listView.setLayoutParams(params);
     }
 
     //获取json数据部分
@@ -506,7 +484,6 @@ public class NActivity extends AppCompatActivity implements SpeechSynthesizerLis
             }
         }).start();
     }
-
 
 
     private void Gsonjx(String date) { //gson解析部分
@@ -602,7 +579,6 @@ public class NActivity extends AppCompatActivity implements SpeechSynthesizerLis
         //监听到播放结束
         Log.i(TAG, ">>>onSpeechFinish()<<< s: " + s);
     }
-
 
 
     @Override

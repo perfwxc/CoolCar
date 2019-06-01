@@ -13,7 +13,6 @@ import android.support.v4.content.ContextCompat;
 
 import com.baidu.tts.client.SpeechSynthesizer;
 import com.baidu.tts.client.TtsMode;
-import com.wxc.coolcar.Util.InitConfig;
 
 import org.json.JSONObject;
 
@@ -66,14 +65,15 @@ import java.util.TreeSet;
 public class AutoCheck {
 
     private static AutoCheck instance;
-
-    private LinkedHashMap<String, Check> checks;
-
     private static Context context;
-
+    volatile boolean isFinished = false;
+    private LinkedHashMap<String, Check> checks;
     private boolean hasError = false;
 
-    volatile boolean isFinished = false;
+    private AutoCheck(Context context) {
+        this.context = context;
+        checks = new LinkedHashMap<String, Check>();
+    }
 
     /**
      * 获取实例，非线程安全
@@ -183,11 +183,6 @@ public class AutoCheck {
     public void clear() {
         checks.clear();
         hasError = false;
-    }
-
-    private AutoCheck(Context context) {
-        this.context = context;
-        checks = new LinkedHashMap<String, Check>();
     }
 
     private static class PrintConfig {

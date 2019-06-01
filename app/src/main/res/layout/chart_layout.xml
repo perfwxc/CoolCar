@@ -1,43 +1,42 @@
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:scrollbars="vertical"
-    android:fadingEdge="vertical">
+    android:fadingEdge="vertical"
+    android:scrollbars="vertical">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.wxc.coolcar.Chart.ChartActivity">
-
-    <TextView
-        android:id="@+id/webstart"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/textbg"
-        android:text=""
-        android:textAlignment="center"
-        android:textSize="18sp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.wxc.coolcar.Chart.ChartActivity">
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:layout_marginTop="5dp"
-        android:id="@+id/spread_line_chart"
-        android:layout_width="match_parent"
-        android:layout_height="240dp" />
+        <TextView
+            android:id="@+id/webstart"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/textbg"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="18sp" />
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:layout_marginTop="10dp"
-        android:id="@+id/line_chart"
-        android:layout_width="match_parent"
-        android:layout_height="240dp" />
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/spread_line_chart"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_marginTop="5dp" />
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:layout_marginTop="10dp"
-        android:id="@+id/line_chart2"
-        android:layout_width="match_parent"
-        android:layout_height="240dp" />
-</LinearLayout>
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/line_chart"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_marginTop="10dp" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/line_chart2"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
 </ScrollView>

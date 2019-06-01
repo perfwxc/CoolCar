@@ -4,7 +4,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 
 
-
 public abstract class TextChangeWatcher implements TextWatcher {
 
     @Override

@@ -1,5 +1,6 @@
 package com.wxc.coolcar.Main;
 
+import android.Manifest;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -7,13 +8,11 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.Manifest;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Message;
 import android.os.PowerManager;
 import android.os.Vibrator;
 import android.support.design.widget.FloatingActionButton;
@@ -37,17 +36,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import com.baidu.speech.EventListener;
 import com.baidu.speech.EventManager;
 import com.baidu.speech.EventManagerFactory;
@@ -59,7 +47,6 @@ import com.baidu.tts.client.TtsMode;
 import com.igexin.sdk.PushManager;
 import com.wxc.coolcar.Chart.ChartActivity;
 import com.wxc.coolcar.Chat.ChatActivity;
-
 import com.wxc.coolcar.Environment.NActivity;
 import com.wxc.coolcar.Guide.WelActivity;
 import com.wxc.coolcar.Health.MActivity;
@@ -69,23 +56,26 @@ import com.wxc.coolcar.R;
 import com.wxc.coolcar.User.User;
 import com.wxc.coolcar.User.UserAdapter;
 import com.wxc.coolcar.Util.IntentService;
-import com.wxc.coolcar.Util.NotificationUtil;
 import com.wxc.coolcar.Util.PushService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Timer;
 
 import static com.igexin.assist.sdk.AssistPushConsts.LOG_TAG;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    private SpeechSynthesizer mSpeechSynthesizer;
-    private String mSampleDirPath;
     private static final String SAMPLE_DIR_NAME = "baiduTTS";
     private static final String SPEECH_FEMALE_MODEL_NAME = "bd_etts_speech_female.dat";
     private static final String SPEECH_MALE_MODEL_NAME = "bd_etts_speech_male.dat";
@@ -94,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String ENGLISH_SPEECH_FEMALE_MODEL_NAME = "bd_etts_speech_female_en.dat";
     private static final String ENGLISH_SPEECH_MALE_MODEL_NAME = "bd_etts_speech_male_en.dat";
     private static final String ENGLISH_TEXT_MODEL_NAME = "bd_etts_text_en.dat";
+    private SpeechSynthesizer mSpeechSynthesizer;
+    private String mSampleDirPath;
     private DrawerLayout mDrawerLayout;
     private User fruits = new User("人体健康", R.drawable.health, 1);
     private User enir = new User("车内环境", R.drawable.enir, 2);
@@ -104,9 +96,9 @@ public class MainActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer1 = null;
     private EventManager mWpEventManager;
     private PowerManager.WakeLock mWakelock;
-    private Timer timer = null;   //计时器
-    private PowerLED powerLED;   //闪光灯的基类
-    private Vibrator vibrator; //震动
+    private Timer timer = null;     //计时器
+    private PowerLED powerLED;      //闪光灯的基类
+    private Vibrator vibrator;      //震动
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//5.0 全透明实现
-//getWindow.setStatusBarColor(Color.TRANSPARENT)
+            //5.0 全透明实现
+            //getWindow.setStatusBarColor(Color.TRANSPARENT)
             Window window = getWindow();
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
@@ -127,8 +119,8 @@ public class MainActivity extends AppCompatActivity {
         }
         setSupportActionBar(toolbar);
         txtLog = (TextView) findViewById(R.id.txtLog);
-    //    initialEnv();
-   //     initialTts();
+        //    initialEnv();
+        //     initialTts();
         PushManager.getInstance().initialize(this.getApplicationContext(), PushService.class);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
@@ -170,8 +162,10 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_MAIN); i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                i.addCategory(Intent.CATEGORY_HOME); startActivity(i);
+                Intent i = new Intent(Intent.ACTION_MAIN);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.addCategory(Intent.CATEGORY_HOME);
+                startActivity(i);
             }
         });
         initFruits();
@@ -245,12 +239,13 @@ public class MainActivity extends AppCompatActivity {
                 .setSmallIcon(R.drawable.push_small)
                 .setPriority(Notification.PRIORITY_HIGH)
                 .setDefaults(Notification.DEFAULT_VIBRATE)
-                .setFullScreenIntent(pendingIntent,true)
+                .setFullScreenIntent(pendingIntent, true)
                 .setContentTitle("系统检测到您的身体出现异常，请及时查看！")
                 .setContentText("您的体温偏高，请及时查明原因")
                 .setContentIntent(pendingIntent);
         manager.notify(channelId, builder.build());
     }
+
     public void postNotification2(Context context) {
         int channelId = 0x22222;
         Notification.Builder builder;
@@ -274,19 +269,22 @@ public class MainActivity extends AppCompatActivity {
         builder.setTicker("new message")
                 .setSmallIcon(R.drawable.push_small)
                 .setPriority(Notification.PRIORITY_HIGH)
-                .setFullScreenIntent(pendingIntent,true)
+                .setFullScreenIntent(pendingIntent, true)
                 .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setContentTitle("系统检测到车内环境出现异常，请及时查看！")
                 .setContentText("车内光照强度偏高，请及时查明原因")
                 .setContentIntent(pendingIntent);
         manager.notify(channelId, builder.build());
     }
+
     public void onClick1(View v) {
         postNotification1(this);
     }
+
     public void onClick2(View v) {
         postNotification2(this);
     }
+
     private void initialTts() {
         this.mSpeechSynthesizer = SpeechSynthesizer.getInstance();
         this.mSpeechSynthesizer.setContext(this);
@@ -350,37 +348,39 @@ public class MainActivity extends AppCompatActivity {
         AuthInfo authInfo = this.mSpeechSynthesizer.auth(TtsMode.MIX);
 
         if (authInfo.isSuccess()) {
-            Toast.makeText(this,"车载精灵为您服务",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "车载精灵为您服务", Toast.LENGTH_SHORT).show();
             speak("车载精灵为您服务");
         } else {
             String errorMsg = authInfo.getTtsError().getDetailMessage();
-            Toast.makeText(this,"auth failed errorMsg=" + errorMsg,Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "auth failed errorMsg=" + errorMsg, Toast.LENGTH_LONG).show();
         }
 
         // 初始化tts
         mSpeechSynthesizer.initTts(TtsMode.MIX);
         // 加载离线英文资源（提供离线英文合成功能）
-//        int result =
-//                mSpeechSynthesizer.loadEnglishModel(mSampleDirPath + "/" + ENGLISH_TEXT_MODEL_NAME, mSampleDirPath
-//                        + "/" + ENGLISH_SPEECH_FEMALE_MODEL_NAME);
+        //        int result =
+        //                mSpeechSynthesizer.loadEnglishModel(mSampleDirPath + "/" + ENGLISH_TEXT_MODEL_NAME, mSampleDirPath
+        //                        + "/" + ENGLISH_SPEECH_FEMALE_MODEL_NAME);
         //Toast.makeText(this,"loadEnglishModel result=" + result,Toast.LENGTH_LONG).show();
 
         //打印引擎信息和model基本信息
         //printEngineInfo();
     }
+
     private void speak(String text) {
-//        String text = this.mInput.getText().toString();
+        //        String text = this.mInput.getText().toString();
         //需要合成的文本text的长度不能超过1024个GBK字节。
-//        if (TextUtils.isEmpty(mInput.getText())) {
-//            text = "欢迎使用百度语音合成SDK,百度语音为你提供支持。";
-//            mInput.setText(text);
-//        }
+        //        if (TextUtils.isEmpty(mInput.getText())) {
+        //            text = "欢迎使用百度语音合成SDK,百度语音为你提供支持。";
+        //        }
+        //            mInput.setText(text);
         int result = this.mSpeechSynthesizer.speak(text);
         if (result < 0) {
-            Toast.makeText(this,"error,please look up error code in doc or URL:http://yuyin.baidu.com/docs/tts/122 ",Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "error,please look up error code in doc or URL:http://yuyin.baidu.com/docs/tts/122 ", Toast.LENGTH_LONG).show();
         }
     }
 
+    //语音助手初始化，因为在主界面使用不稳定，因此暂时不适用
     private void initialEnv() {
         if (mSampleDirPath == null) {
             String sdcardPath = Environment.getExternalStorageDirectory().toString();
@@ -451,9 +451,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -468,6 +465,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+
     private void initPermission() {
         String permissions[] = {
                 Manifest.permission.INTERNET,
@@ -495,6 +493,7 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, toApplyList.toArray(tmpList), 123);
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         // 此处为android 6.0以上动态授权的回调，用户自行实现。
@@ -503,10 +502,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // super.onBackPressed();//注释掉这行,back键不退出activity
-        Intent i = new Intent(Intent.ACTION_MAIN); i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        i.addCategory(Intent.CATEGORY_HOME); startActivity(i);
+        Intent i = new Intent(Intent.ACTION_MAIN);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        i.addCategory(Intent.CATEGORY_HOME);
+        startActivity(i);
         Log.i(LOG_TAG, "onBackPressed");
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -529,12 +531,12 @@ public class MainActivity extends AppCompatActivity {
                         txtLog.append("唤醒成功, 唤醒词: " + word + "\r\n");
                         Log.e("------", "唤醒成功, 唤醒词: " + word + "\r\n");
                         if (word.equals("车载精灵")) {
-                         //   mWakelock.acquire();//唤醒屏幕
+                            //   mWakelock.acquire();//唤醒屏幕
                             //      mediaPlayer1.seekTo(0);  //音乐从头开始
                             //      mediaPlayer1.start();  //播放音乐
                             vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-                            long [] pattern = {100,400,100,400}; // 停止 开启 停止 开启
-                            vibrator.vibrate(pattern,-1); //重复两次上面的pattern 如果只想震动一次，index设为-1
+                            long[] pattern = {100, 400, 100, 400}; // 停止 开启 停止 开启
+                            vibrator.vibrate(pattern, -1); //重复两次上面的pattern 如果只想震动一次，index设为-1
 
                             /**
                              * 计时器
@@ -552,7 +554,7 @@ public class MainActivity extends AppCompatActivity {
                             // 通过包名获取要跳转的app，创建intent对象
                             //  Intent intent = getPackageManager().getLaunchIntentForPackage("com.tencent.mm");
                             // 这里如果intent为空，就说名没有安装要跳转的应用嘛
-                            Intent intent =new Intent (MainActivity.this, MActivity.class);
+                            Intent intent = new Intent(MainActivity.this, MActivity.class);
                             if (intent != null) {
                                 // 这里跟Activity传递参数一样的嘛，不要担心怎么传递参数，还有接收参数也是跟Activity和Activity传参数一样
                                 startActivity(intent);
@@ -587,7 +589,7 @@ public class MainActivity extends AppCompatActivity {
         // 3) 通知唤醒管理器, 启动唤醒功能
         HashMap params = new HashMap();
         params.put("kws-file", "assets:///WakeUp3.bin"); // 设置唤醒资源, 唤醒资源请到 http://yuyin.baidu.com/wake#m4 来评估和导出
-      //  mWpEventManager.send("wp.start", new JSONObject(params).toString(), null, 0, 0);
+        //  mWpEventManager.send("wp.start", new JSONObject(params).toString(), null, 0, 0);
     }
 
 
@@ -596,10 +598,10 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         // 停止唤醒监听
         mWpEventManager.send("wp.stop", null, null, 0, 0);
-//        mediaPlayer1.stop();
-//        mediaPlayer1.release();  //释放mediaPlayer
-//        mWakelock.release();//释放
-    //    timer.cancel();  //结束计时
-    //    powerLED.Destroy();//释放相机的闪光灯
+        //        mediaPlayer1.stop();
+        //        mediaPlayer1.release();  //释放mediaPlayer
+        //        mWakelock.release();//释放
+        //    timer.cancel();  //结束计时
+        //    powerLED.Destroy();//释放相机的闪光灯
     }
 }

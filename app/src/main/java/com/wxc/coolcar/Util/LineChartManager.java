@@ -1,4 +1,5 @@
 package com.wxc.coolcar.Util;
+
 import android.content.Context;
 import android.graphics.Color;
 
@@ -25,18 +26,19 @@ public class LineChartManager {
 
     /**
      * 创建一条折线
-     * @param context 上下文
+     *
+     * @param context    上下文
      * @param mLineChart 对象
-     * @param count X轴的数据
-     * @param datas Y轴的数据
+     * @param count      X轴的数据
+     * @param datas      Y轴的数据
      * @return LineData
      */
-    public static LineData initSingleLineChart(Context context, LineChart mLineChart, int count, float[] datas, String [] data) {
+    public static LineData initSingleLineChart(Context context, LineChart mLineChart, int count, float[] datas, String[] data) {
 
         ArrayList<String> xValues = new ArrayList<String>();
         for (int i = 0; i < count; i++) {
             // x轴显示的数据，这里默认使用数字下标显示
-            xValues.add(data[i] );
+            xValues.add(data[i]);
         }
 
         // y轴的数据
@@ -72,7 +74,7 @@ public class LineChartManager {
      * @param datas2     另一条折线在y轴的值
      * @Description:创建两条折线
      */
-    public static LineData initDoubleLineChart(Context context, LineChart mLineChart, int count, float[] datas1, float[] datas2, String [] data) {
+    public static LineData initDoubleLineChart(Context context, LineChart mLineChart, int count, float[] datas1, float[] datas2, String[] data) {
 
         ArrayList<String> xValues = new ArrayList<String>();
         for (int i = 0; i < count; i++) {
@@ -124,7 +126,7 @@ public class LineChartManager {
         dataSets.add(dataSet1);
 
         //构建一个LineData  将dataSets放入
-        LineData lineData = new LineData(xValues,  dataSets);
+        LineData lineData = new LineData(xValues, dataSets);
         return lineData;
     }
 

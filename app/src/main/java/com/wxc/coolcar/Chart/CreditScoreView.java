@@ -60,8 +60,16 @@ public class CreditScoreView extends View {
         this(context, null);
     }
 
-    public void setData (String aa , String bb , String cc1 ,String cc2,  String dd , String ee )
-    {
+    public CreditScoreView(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public CreditScoreView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init();
+    }
+
+    public void setData(String aa, String bb, String cc1, String cc2, String dd, String ee) {
         float a = Float.parseFloat(aa);
         float b = Float.parseFloat(bb);
         float c1 = Float.parseFloat(cc1);
@@ -69,20 +77,20 @@ public class CreditScoreView extends View {
         float d = Float.parseFloat(dd);
         float e = Float.parseFloat(ee);
         int A = 0;
-        if(a >= 36.3 && a <= 37.2) A = 20;
-        if((a >= 36.0 && a <= 36.2) || (a >= 37.3 && a <= 37.5)) A = 18;
-        if((a >= 35.5 && a <= 35.9) || (a >= 37.6 && a <= 37.8)) A = 16;
-        if((a >= 35.0 && a <= 35.4) || (a >= 37.9 && a <= 38.0)) A = 14;
-        if((a >= 34.6 && a <= 34.9) || (a >= 38.1 && a <= 38.2)) A = 12;
-        if((a >= 34.2 && a <= 34.5) || (a >= 38.1 && a <= 38.2)) A = 10;
-        if((a >= 33.6 && a <= 34.1) || (a >= 38.3 && a <= 38.4)) A = 8;
-        if((a >= 33.1 && a <= 33.5) || (a >= 38.5 && a <= 38.6)) A = 6;
-        if((a >= 32.6 && a <= 33.0) || (a >= 38.7 && a <= 38.8)) A = 5;
-        if((a >= 32.0 && a <= 32.5) || (a >= 38.9 && a <= 39.0)) A = 4;
-        if((a >= 30.0 && a <= 31.9) || (a >= 40.4 && a <= 41.0)) A = 3;
-        if((a >= 27.1 && a <= 29.9) || (a >= 39.7 && a <= 40.3)) A = 2;
-        if((a >= 25.0 && a <= 27.0) || (a >= 39.1 && a <= 39.6)) A = 1;
-        data[4]=A;
+        if (a >= 36.3 && a <= 37.2) A = 20;
+        if ((a >= 36.0 && a <= 36.2) || (a >= 37.3 && a <= 37.5)) A = 18;
+        if ((a >= 35.5 && a <= 35.9) || (a >= 37.6 && a <= 37.8)) A = 16;
+        if ((a >= 35.0 && a <= 35.4) || (a >= 37.9 && a <= 38.0)) A = 14;
+        if ((a >= 34.6 && a <= 34.9) || (a >= 38.1 && a <= 38.2)) A = 12;
+        if ((a >= 34.2 && a <= 34.5) || (a >= 38.1 && a <= 38.2)) A = 10;
+        if ((a >= 33.6 && a <= 34.1) || (a >= 38.3 && a <= 38.4)) A = 8;
+        if ((a >= 33.1 && a <= 33.5) || (a >= 38.5 && a <= 38.6)) A = 6;
+        if ((a >= 32.6 && a <= 33.0) || (a >= 38.7 && a <= 38.8)) A = 5;
+        if ((a >= 32.0 && a <= 32.5) || (a >= 38.9 && a <= 39.0)) A = 4;
+        if ((a >= 30.0 && a <= 31.9) || (a >= 40.4 && a <= 41.0)) A = 3;
+        if ((a >= 27.1 && a <= 29.9) || (a >= 39.7 && a <= 40.3)) A = 2;
+        if ((a >= 25.0 && a <= 27.0) || (a >= 39.1 && a <= 39.6)) A = 1;
+        data[4] = A;
 
 
         int B = 0;
@@ -93,73 +101,73 @@ public class CreditScoreView extends View {
         if (b >= 86 && b <= 90) B = 16;
         if (b >= 91 && b <= 95) B = 15;
         if (b >= 96 && b <= 100) B = 14;
-        if((b >= 59 && b < 60) || (b >= 101 && b <= 105)) B= 10;
-        if((b >= 57 && b <= 58) || (b >= 106 && b <= 110)) B= 9;
-        if((b >= 55 && b <= 56) || (b >= 111 && b <= 115)) B= 8;
-        if((b >= 53 && b <= 54) || (b >= 116 && b <= 120)) B= 7;
-        if((b > 51 && b <= 52) || (b >= 121 && b <= 125)) B= 6;
-        if((b >= 51 && b < 52) || (b >= 126 && b <= 130)) B= 5;
-        if((b >= 48 && b <= 50) || (b >= 131 && b <= 137)) B= 4;
-        if((b >= 45 && b <= 47) || (b >= 138 && b <= 146)) B= 3;
-        if((b >= 42 && b <= 44) || (b >= 147 && b <= 153)) B= 2;
-        if((b >= 40 && b <= 41) || (b >= 154 && b <= 160)) B= 1;
-        data[3]=B;
+        if ((b >= 59 && b < 60) || (b >= 101 && b <= 105)) B = 10;
+        if ((b >= 57 && b <= 58) || (b >= 106 && b <= 110)) B = 9;
+        if ((b >= 55 && b <= 56) || (b >= 111 && b <= 115)) B = 8;
+        if ((b >= 53 && b <= 54) || (b >= 116 && b <= 120)) B = 7;
+        if ((b > 51 && b <= 52) || (b >= 121 && b <= 125)) B = 6;
+        if ((b >= 51 && b < 52) || (b >= 126 && b <= 130)) B = 5;
+        if ((b >= 48 && b <= 50) || (b >= 131 && b <= 137)) B = 4;
+        if ((b >= 45 && b <= 47) || (b >= 138 && b <= 146)) B = 3;
+        if ((b >= 42 && b <= 44) || (b >= 147 && b <= 153)) B = 2;
+        if ((b >= 40 && b <= 41) || (b >= 154 && b <= 160)) B = 1;
+        data[3] = B;
 
-        int C=0;
+        int C = 0;
         int C1 = 0;
-        if(c1 >= 110 && c1 <= 120) C1 = 20;
-        if(c1 == 109 || c1 == 121) C1 = 19;
-        if(c1 == 108 || c1 == 122) C1 = 18;
-        if(c1 == 107 || c1 == 123) C1 = 17;
-        if(c1 == 106 || c1 == 124) C1 = 16;
-        if(c1 == 105 || c1 == 125) C1 = 15;
-        if(c1== 104 || c1== 126) C1 = 14;
-        if(c1 == 103 || c1 == 127) C1 = 13;
-        if(c1 == 102 || c1 == 128) C1 = 12;
-        if(c1 == 101 || c1 == 129) C1 = 11;
-        if(c1 == 100 || c1 == 130) C1 = 10;
-        if(c1 == 99 || c1 == 131) C1 = 9;
-        if(c1 == 98 || c1 == 132) C1 = 8;
-        if(c1 == 97 || c1 == 133) C1 = 7;
-        if(c1 == 96 || c1 == 134) C1 = 6;
-        if(c1 == 95 || c1 == 135) C1 = 5;
-        if(c1 == 94 || c1 == 136) C1 = 4;
-        if(c1 == 93 || c1 == 137) C1 = 3;
-        if(c1 == 92 || c1 == 138) C1 = 2;
-        if(c1 == 91 || c1 == 139) C1 = 1;
-        if(c1 == 90 || c1 == 140) C1 = 1;
+        if (c1 >= 110 && c1 <= 120) C1 = 20;
+        if (c1 == 109 || c1 == 121) C1 = 19;
+        if (c1 == 108 || c1 == 122) C1 = 18;
+        if (c1 == 107 || c1 == 123) C1 = 17;
+        if (c1 == 106 || c1 == 124) C1 = 16;
+        if (c1 == 105 || c1 == 125) C1 = 15;
+        if (c1 == 104 || c1 == 126) C1 = 14;
+        if (c1 == 103 || c1 == 127) C1 = 13;
+        if (c1 == 102 || c1 == 128) C1 = 12;
+        if (c1 == 101 || c1 == 129) C1 = 11;
+        if (c1 == 100 || c1 == 130) C1 = 10;
+        if (c1 == 99 || c1 == 131) C1 = 9;
+        if (c1 == 98 || c1 == 132) C1 = 8;
+        if (c1 == 97 || c1 == 133) C1 = 7;
+        if (c1 == 96 || c1 == 134) C1 = 6;
+        if (c1 == 95 || c1 == 135) C1 = 5;
+        if (c1 == 94 || c1 == 136) C1 = 4;
+        if (c1 == 93 || c1 == 137) C1 = 3;
+        if (c1 == 92 || c1 == 138) C1 = 2;
+        if (c1 == 91 || c1 == 139) C1 = 1;
+        if (c1 == 90 || c1 == 140) C1 = 1;
 
         int C2 = 0;
-        if(c2 >= 75 && c2 <= 80) C2 = 20;
-        if(c2 == 74 || c2 == 81) C2 = 18;
-        if(c2 == 73 || c2 == 82) C2 = 16;
-        if(c2 == 72 || c2 == 83) C2 = 14;
-        if(c2 == 71 || c2 == 84) C2 = 12;
-        if(c2 == 70 || c2 == 85) C2 = 10;
-        if(((c2 >= 68) && (c2 <= 69)) || c2 == 86) C2 = 8;
-        if(((c2 >= 66) && (c2 <= 67)) || c2 == 87) C2 = 6;
-        if(((c2 >= 64) && (c2 <= 65)) || c2 == 88) C2 = 4;
-        if(((c2 >= 62) && (c2 <= 63)) || c2 == 89) C2 = 2;
-        if(((c2 >= 60) && (c2 <= 61)) || c2 == 90) C2 = 1;
-        C = C1>C2?C2:C1;
-        data[1]=C;
+        if (c2 >= 75 && c2 <= 80) C2 = 20;
+        if (c2 == 74 || c2 == 81) C2 = 18;
+        if (c2 == 73 || c2 == 82) C2 = 16;
+        if (c2 == 72 || c2 == 83) C2 = 14;
+        if (c2 == 71 || c2 == 84) C2 = 12;
+        if (c2 == 70 || c2 == 85) C2 = 10;
+        if (((c2 >= 68) && (c2 <= 69)) || c2 == 86) C2 = 8;
+        if (((c2 >= 66) && (c2 <= 67)) || c2 == 87) C2 = 6;
+        if (((c2 >= 64) && (c2 <= 65)) || c2 == 88) C2 = 4;
+        if (((c2 >= 62) && (c2 <= 63)) || c2 == 89) C2 = 2;
+        if (((c2 >= 60) && (c2 <= 61)) || c2 == 90) C2 = 1;
+        C = C1 > C2 ? C2 : C1;
+        data[1] = C;
 
         int D = 0;
-        if(d == 98) D = 20;
-        if(d == 97) D = 19;
-        if(d == 96) D = 18;
-        if(d == 95) D = 17;
-        if(d == 94) D = 16;
-        if(d == 93) D = 12;
-        if(d == 92) D = 8;
-        if(d == 91) D = 4;
-        if(d == 90) D = 2;
-        if(d < 90) D = 1;
-        data[2]=D;
+        if (d == 98) D = 20;
+        if (d == 97) D = 19;
+        if (d == 96) D = 18;
+        if (d == 95) D = 17;
+        if (d == 94) D = 16;
+        if (d == 93) D = 12;
+        if (d == 92) D = 8;
+        if (d == 91) D = 4;
+        if (d == 90) D = 2;
+        if (d < 90) D = 1;
+        data[2] = D;
 
         int E = 0;
         if (e == 0) E = 20;
-        if (e ==1) E = 19;
+        if (e == 1) E = 19;
         if (e >= 2 && e <= 4) E = 18;
         if (e >= 5 && e <= 7) E = 17;
         if (e >= 8 && e <= 10) E = 16;
@@ -178,16 +186,7 @@ public class CreditScoreView extends View {
         if (e >= 68 && e <= 72) E = 3;
         if (e >= 73 && e <= 77) E = 2;
         if (e >= 78 && e <= 80) E = 1;
-        data[0]=E;
-    }
-
-    public CreditScoreView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public CreditScoreView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init();
+        data[0] = E;
     }
 
     private void init() {

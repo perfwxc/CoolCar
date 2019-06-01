@@ -23,74 +23,28 @@ import android.widget.ListView;
 public class PullToZoomListView extends ListView implements AbsListView.OnScrollListener {
 
     private static final int INVALID_VALUE = -1;
-    private static float DEFAULT_MIN_SCALE = 1.0f;
-
     private static final String TAG = "PullToZoomListView";
-
-    int mActivePointerId = INVALID_VALUE;
-
-    private FrameLayout mHeaderContainer;
-    private ImageView mHeaderImage;
-    private ImageView mShadow;
-
-    private int mScreenHeight;
-    private int mHeaderHeight;
-
-    float mLastMotionY = INVALID_VALUE;
-    float mLastScale = INVALID_VALUE;
-    float mMaxScale = INVALID_VALUE;
-
-    private OnScrollListener mOnScrollListener;
-    private ScalingRunnable mScalingRunnable = new ScalingRunnable();
-
-    private boolean mScrollable = true;
-    private boolean mShowHeaderImage = true;
-    private boolean mZoomable = true;
-
+    private static float DEFAULT_MIN_SCALE = 1.0f;
     private static final Interpolator sInterpolator = new Interpolator() {
         public float getInterpolation(float t) {
             t -= DEFAULT_MIN_SCALE;
             return (t * t * t * t * t) + DEFAULT_MIN_SCALE;
         }
     };
-
-    class ScalingRunnable implements Runnable {
-        long mDuration;
-        boolean mIsFinished = true;
-        float mScale;
-        long mStartTime;
-
-        public boolean isFinished() {
-            return mIsFinished;
-        }
-
-        public void abortAnimation() {
-            mIsFinished = true;
-        }
-
-        public void startAnimation(long duration) {
-            mStartTime = SystemClock.currentThreadTimeMillis();
-            mDuration = duration;
-            mScale = ((float) mHeaderContainer.getBottom()) / ((float) mHeaderHeight);
-            mIsFinished = false;
-            post(this);
-        }
-
-        public void run() {
-            if (!mIsFinished && ((double) mScale) > 1.0d) {
-                float scale = mScale - ((mScale - DEFAULT_MIN_SCALE) * sInterpolator.getInterpolation((((float) SystemClock.currentThreadTimeMillis()) - ((float) mStartTime)) / ((float) mDuration)));
-                ViewGroup.LayoutParams params = mHeaderContainer.getLayoutParams();
-                if (scale <= DEFAULT_MIN_SCALE) {
-                    mIsFinished = true;
-                    params.height = mHeaderHeight;
-                } else {
-                    params.height = (int) (((float) mHeaderHeight) * scale);
-                }
-                mHeaderContainer.setLayoutParams(params);
-                post(this);
-            }
-        }
-    }
+    int mActivePointerId = INVALID_VALUE;
+    float mLastMotionY = INVALID_VALUE;
+    float mLastScale = INVALID_VALUE;
+    float mMaxScale = INVALID_VALUE;
+    private FrameLayout mHeaderContainer;
+    private ImageView mHeaderImage;
+    private ImageView mShadow;
+    private int mScreenHeight;
+    private int mHeaderHeight;
+    private OnScrollListener mOnScrollListener;
+    private ScalingRunnable mScalingRunnable = new ScalingRunnable();
+    private boolean mScrollable = true;
+    private boolean mShowHeaderImage = true;
+    private boolean mZoomable = true;
 
     public PullToZoomListView(Context context) {
         super(context);
@@ -152,24 +106,24 @@ public class PullToZoomListView extends ListView implements AbsListView.OnScroll
         }
     }
 
+    public boolean isZoomable() {
+        return mZoomable;
+    }
+
     public void setZoomable(boolean zoomable) {
         if (mShowHeaderImage) {
             mZoomable = zoomable;
         }
     }
 
-    public boolean isZoomable() {
-        return mZoomable;
+    public boolean isScrollable() {
+        return mScrollable;
     }
 
     public void setScrollable(boolean scrollable) {
         if (mShowHeaderImage) {
             mScrollable = scrollable;
         }
-    }
-
-    public boolean isScrollable() {
-        return mScrollable;
     }
 
     public void hideHeaderImage() {
@@ -311,5 +265,43 @@ public class PullToZoomListView extends ListView implements AbsListView.OnScroll
 
     public void setOnScrollListener(OnScrollListener l) {
         mOnScrollListener = l;
+    }
+
+    class ScalingRunnable implements Runnable {
+        long mDuration;
+        boolean mIsFinished = true;
+        float mScale;
+        long mStartTime;
+
+        public boolean isFinished() {
+            return mIsFinished;
+        }
+
+        public void abortAnimation() {
+            mIsFinished = true;
+        }
+
+        public void startAnimation(long duration) {
+            mStartTime = SystemClock.currentThreadTimeMillis();
+            mDuration = duration;
+            mScale = ((float) mHeaderContainer.getBottom()) / ((float) mHeaderHeight);
+            mIsFinished = false;
+            post(this);
+        }
+
+        public void run() {
+            if (!mIsFinished && ((double) mScale) > 1.0d) {
+                float scale = mScale - ((mScale - DEFAULT_MIN_SCALE) * sInterpolator.getInterpolation((((float) SystemClock.currentThreadTimeMillis()) - ((float) mStartTime)) / ((float) mDuration)));
+                ViewGroup.LayoutParams params = mHeaderContainer.getLayoutParams();
+                if (scale <= DEFAULT_MIN_SCALE) {
+                    mIsFinished = true;
+                    params.height = mHeaderHeight;
+                } else {
+                    params.height = (int) (((float) mHeaderHeight) * scale);
+                }
+                mHeaderContainer.setLayoutParams(params);
+                post(this);
+            }
+        }
     }
 }

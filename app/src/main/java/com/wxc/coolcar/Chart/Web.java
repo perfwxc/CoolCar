@@ -2,15 +2,11 @@ package com.wxc.coolcar.Chart;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.wxc.coolcar.R;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
 /**
  * Created by Supreme on 2018/7/25.

@@ -14,9 +14,8 @@ import android.util.Log;
 
 public class UiMessageListener extends MessageListener {
 
-    private Handler mainHandler;
-
     private static final String TAG = "UiMessageListener";
+    private Handler mainHandler;
 
     public UiMessageListener(Handler mainHandler) {
         super();
@@ -26,9 +25,10 @@ public class UiMessageListener extends MessageListener {
     /**
      * 合成数据和进度的回调接口，分多次回调。
      * 注意：progress表示进度，与播放到哪个字无关
+     *
      * @param utteranceId
-     * @param data 合成的音频数据。该音频数据是采样率为16K，2字节精度，单声道的pcm数据。
-     * @param progress 文本按字符划分的进度，比如:你好啊 进度是0-3
+     * @param data        合成的音频数据。该音频数据是采样率为16K，2字节精度，单声道的pcm数据。
+     * @param progress    文本按字符划分的进度，比如:你好啊 进度是0-3
      */
     @Override
     public void onSynthesizeDataArrived(String utteranceId, byte[] data, int progress) {
@@ -41,7 +41,7 @@ public class UiMessageListener extends MessageListener {
      * 注意：progress表示进度，与播放到哪个字无关
      *
      * @param utteranceId
-     * @param progress 文本按字符划分的进度，比如:你好啊 进度是0-3
+     * @param progress    文本按字符划分的进度，比如:你好啊 进度是0-3
      */
     @Override
     public void onSpeechProgressChanged(String utteranceId, int progress) {

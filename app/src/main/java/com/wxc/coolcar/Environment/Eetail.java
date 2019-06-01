@@ -1,6 +1,5 @@
 package com.wxc.coolcar.Environment;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -14,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.wxc.coolcar.Chart.EnviScoreView;
 import com.wxc.coolcar.R;
 
@@ -41,37 +41,37 @@ public class Eetail extends AppCompatActivity {
         }
 
         int[] flag = new int[6];
-         String[] string = new String[]{
-                 "开窗通风",
-                 "必要时空调降温",
-                 "必要时空调升温",
-                 "注意保暖",
-                 "及时离开车辆",
-                 "检查车内是否有火源",
-                 "及时停车，注意光强干扰",
-                 "打开遮光前板",
-                 "若为其他车灯照射，可切换远近光提醒对方车辆",
-                 "若空调开放，请及时关闭",
-                 "光线较暗，注意安全",
-                 "打开汽车除湿模式",
-                 "注意保湿",
-                 "根据您当前的车内环境，建议您",
-                 "车载精灵为您提供最舒适的环境",
-                 "车内环境良好，祝您驾驶愉快！"
+        String[] string = new String[]{
+                "开窗通风",
+                "必要时空调降温",
+                "必要时空调升温",
+                "注意保暖",
+                "及时离开车辆",
+                "检查车内是否有火源",
+                "及时停车，注意光强干扰",
+                "打开遮光前板",
+                "若为其他车灯照射，可切换远近光提醒对方车辆",
+                "若空调开放，请及时关闭",
+                "光线较暗，注意安全",
+                "打开汽车除湿模式",
+                "注意保湿",
+                "根据您当前的车内环境，建议您",
+                "车载精灵为您提供最舒适的环境",
+                "车内环境良好，祝您驾驶愉快！"
         };
 //可以输入zhio
         int[] aflag = new int[string.length];
 //	System.out.println(s.length);
         int count = 0;
-        String []six = new String[8];
+        String[] six = new String[8];
         Intent dataIntent = getIntent();//接收传递的数据
-        String ia = dataIntent.getStringExtra("ia");
-        String ib = dataIntent.getStringExtra("ib");
-        String ic = dataIntent.getStringExtra("ic");
-        String id = dataIntent.getStringExtra("id");
-        String ie = dataIntent.getStringExtra("ie");
-        String if1 = dataIntent.getStringExtra("if");
-        EnviScoreView view = findViewById(R.id.imark) ;
+        String ia = dataIntent.getStringExtra("ienvironmentTemperature");
+        String ib = dataIntent.getStringExtra("iambientHumidity");
+        String ic = dataIntent.getStringExtra("ismokeDensity");
+        String id = dataIntent.getStringExtra("iCODensity");
+        String ie = dataIntent.getStringExtra("iH2S");
+        String if1 = dataIntent.getStringExtra("ialcoholConcentration");
+        EnviScoreView view = findViewById(R.id.imark);
         view.setData(ia, ib, ic, id, ie, if1);
         TranslateAnimation showAnim = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
                 Animation.RELATIVE_TO_SELF, 0.0f,
@@ -110,18 +110,18 @@ public class Eetail extends AppCompatActivity {
         float e = Float.parseFloat(if1);
 
 
-        if(a1 < 22)  flag[0] = -1;
-        if(a1 > 28) flag[0] = 1;
-        if(a2 < 30)  flag[1] = -1;
-        if(a2 > 75) flag[1] = 1;
-        if(b > 4000) flag[2] = 1;
-        if(c > 4000) flag[3] = 1;
-        if(d > 4000) flag[4] = 1;
-        if(e <=15 ) flag[5] = -1;
-        if(e >4000 ) flag[5] = 1;
-        for(int i = 0;i<=5;i++){
-            if(flag[i] == 0) continue;
-            if(flag[i] == 1){
+        if (a1 < 22) flag[0] = -1;
+        if (a1 > 28) flag[0] = 1;
+        if (a2 < 30) flag[1] = -1;
+        if (a2 > 75) flag[1] = 1;
+        if (b > 4000) flag[2] = 1;
+        if (c > 4000) flag[3] = 1;
+        if (d > 4000) flag[4] = 1;
+        if (e <= 15) flag[5] = -1;
+        if (e > 4000) flag[5] = 1;
+        for (int i = 0; i <= 5; i++) {
+            if (flag[i] == 0) continue;
+            if (flag[i] == 1) {
                 switch (i) {
                     case 0:
                         aflag[0] = 1;
@@ -152,7 +152,7 @@ public class Eetail extends AppCompatActivity {
                 }
             }
 
-            if(flag[i] == -1){
+            if (flag[i] == -1) {
                 switch (i) {
                     case 0:
                         aflag[2] = 1;
@@ -169,33 +169,33 @@ public class Eetail extends AppCompatActivity {
                 }
             }
         }
-        for(int i = 0;i < aflag.length;i++){
+        for (int i = 0; i < aflag.length; i++) {
             if (aflag[i] != 0) {
                 count++;
             }
         }
         if (count == 0) {
             tip1.setText(string[15]);
-        }else {
+        } else {
             tip2.setText(string[13]);
             StringBuffer sb = new StringBuffer();
             for (int i = 0; i < aflag.length; i++) {
-                if(aflag[i] == 1){
+                if (aflag[i] == 1) {
                     sb.append(string[i]);
 
                 }
             }
 
-                tip3.setText(sb);
+            tip3.setText(sb);
             tip4.setText(string[14]);
         }
 
 
-        String iaa=ia+"<small><small> ℃</small></small><br/><small><small><small><small><small><br/></small></small></small></small></small>"+ib+"<small><small>  %RH</small></small>";
-        String ibb=ic+"<small><small> ppm</small></small>";
-        String icc=if1+"<small><small> </small></small>";
-        String idd=ie+"<small><small> g/L</small></small>";
-        String iff=id+"<small><small> ppm</small></small>";
+        String iaa = ia + "<small><small> ℃</small></small><br/><small><small><small><small><small><br/></small></small></small></small></small>" + ib + "<small><small>  %RH</small></small>";
+        String ibb = ic + "<small><small> ppm</small></small>";
+        String icc = if1 + "<small><small> </small></small>";
+        String idd = ie + "<small><small> g/L</small></small>";
+        String iff = id + "<small><small> ppm</small></small>";
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,11 +209,11 @@ public class Eetail extends AppCompatActivity {
         tv3.setText(Html.fromHtml(icc));
         tv4.setText(Html.fromHtml(idd));
         tv10.setText(Html.fromHtml(iff));
-        tv5.setText("\n"+"   温湿度");
-        tv6.setText("\n"+"   烟雾浓度");
-        tv7.setText("\n"+"   光照强度");
-        tv8.setText("\n"+"   一氧化碳浓度");
-        tv9.setText("\n"+"   硫化氢浓度");
+        tv5.setText("\n" + "   温湿度");
+        tv6.setText("\n" + "   烟雾浓度");
+        tv7.setText("\n" + "   光照强度");
+        tv8.setText("\n" + "   一氧化碳浓度");
+        tv9.setText("\n" + "   硫化氢浓度");
 
     }
 }

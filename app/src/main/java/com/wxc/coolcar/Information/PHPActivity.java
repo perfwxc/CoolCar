@@ -4,25 +4,22 @@ package com.wxc.coolcar.Information;
  * Created by Administrator on 2018/6/18.
  */
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONObject;
-
 import android.app.Activity;
-import android.content.Context;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.wxc.coolcar.R;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PHPActivity extends Activity {
 
@@ -44,8 +41,6 @@ public class PHPActivity extends Activity {
     private ItemGroup et5;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +52,6 @@ public class PHPActivity extends Activity {
         et4 = findViewById(R.id.add_ig);
         et5 = findViewById(R.id.call_ig);
         btn = (Button) findViewById(R.id.submit_btn);
-
 
 
         btn.setOnClickListener(new OnClickListener() {
@@ -81,14 +75,13 @@ public class PHPActivity extends Activity {
                 params.add(new BasicNameValuePair("help", e));
 
 
-
                 JSONParser jsonParser = new JSONParser();
 
-                try{
-                    JSONObject json = jsonParser.makeHttpRequest(url,"POST", params);
+                try {
+                    JSONObject json = jsonParser.makeHttpRequest(url, "POST", params);
                     Log.v("uploadsucceed", "uploadsucceed");
 
-                }catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 

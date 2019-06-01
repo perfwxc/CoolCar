@@ -1,6 +1,17 @@
 package com.wxc.coolcar.Map;
 
-import java.util.List;
+import android.content.Context;
+import android.graphics.Color;
+import android.location.LocationManager;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -16,28 +27,8 @@ import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.tts.client.SpeechSynthesizer;
 import com.wxc.coolcar.R;
-import com.wxc.mylibrary.PullToZoomListView;
 
-import android.app.Activity;
-import android.graphics.Color;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.content.Context;
-import android.location.Location;
-import android.location.LocationManager;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.Toast;
-import android.os.Build;
+import java.util.List;
 
 public class MapActivity extends AppCompatActivity {
     private MapView mMapView;
@@ -61,8 +52,8 @@ public class MapActivity extends AppCompatActivity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//5.0 全透明实现
-//getWindow.setStatusBarColor(Color.TRANSPARENT)
+            //5.0 全透明实现
+            //getWindow.setStatusBarColor(Color.TRANSPARENT)
             Window window = getWindow();
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
@@ -94,7 +85,7 @@ public class MapActivity extends AppCompatActivity {
 
     }
 
-    public void initMapView(){
+    public void initMapView() {
 
         //得到地图实例
         mMapView = (MapView) findViewById(R.id.bmapView);
@@ -110,26 +101,26 @@ public class MapActivity extends AppCompatActivity {
 
         //使用LocationManager判断可以使用的定位方式
 
-        locationManager=(LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        List<String> providerList= locationManager.getProviders(true);
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        List<String> providerList = locationManager.getProviders(true);
 
-        if(providerList.contains(LocationManager.GPS_PROVIDER)){
-            provider=LocationManager.GPS_PROVIDER;
+        if (providerList.contains(LocationManager.GPS_PROVIDER)) {
+            provider = LocationManager.GPS_PROVIDER;
 
-        }else if(providerList.contains(LocationManager.NETWORK_PROVIDER)){
-            provider=LocationManager.NETWORK_PROVIDER;
-        } else{
+        } else if (providerList.contains(LocationManager.NETWORK_PROVIDER)) {
+            provider = LocationManager.NETWORK_PROVIDER;
+        } else {
             Toast.makeText(this, "No location Provider to use", Toast.LENGTH_SHORT).show();
             return;
         }
     }
 
-    public void initLocation(){
+    public void initLocation() {
 
         //创建LocationClient实例
 
         locationClient = new LocationClient(getApplicationContext());
-        mbdLocationListener= new MbdLocationListener();
+        mbdLocationListener = new MbdLocationListener();
         //注册监听器，定位成功后回调
         locationClient.registerLocationListener(mbdLocationListener);
         //初始化
@@ -141,7 +132,7 @@ public class MapActivity extends AppCompatActivity {
     }
 
 
-    public void setLocationOption(){
+    public void setLocationOption() {
 
 
         LocationClientOption option = new LocationClientOption();
@@ -154,64 +145,19 @@ public class MapActivity extends AppCompatActivity {
 
     }
 
-
-
-    private class MbdLocationListener implements BDLocationListener{
-
-        @Override
-        public void  onReceiveLocation(BDLocation location){
-
-            //创建MyLocationData类
-            MyLocationData locationdata= new MyLocationData.Builder()
-                    .accuracy(location.getRadius())
-                    .latitude(location.getLatitude())
-                    .longitude(location.getLongitude())
-                    .build();
-            //在BaiduMap中设置
-            baiduMap.setMyLocationData(locationdata);
-
-            mLatitude=location.getLatitude();
-            mLongitude=location.getLongitude();
-
-            //判断是否第一次定位，如果是执行如下代码
-
-            if(isFirstIn){
-                LatLng  latLng =new LatLng(mLatitude,mLongitude);
-                MapStatusUpdate msu= MapStatusUpdateFactory.newLatLng(latLng);
-                baiduMap.animateMapStatus(msu);
-                isFirstIn=false;
-                Toast.makeText(
-                        context,
-                        "地址是："+ location.getAddrStr()+"\n"
-                                +"定位精度是："+location.getRadius()
-                        ,Toast.LENGTH_LONG).show();
-                Log.e("Address", String.valueOf(location.getCity()));
-                Log.e("District", String.valueOf(location.getAddrStr()));
-                Log.e("Location", String.valueOf(location));
-
-            }
-        }
-
-
-
-    }
-
-
-
     @Override
     protected void onResume() {
         super.onResume();
         //在activity执行onResume时执行mMapView. onResume ()，实现地图生命周期管理
         mMapView.onResume();
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         //在activity执行onPause时执行mMapView. onPause ()，实现地图生命周期管理
         mMapView.onPause();
     }
-
-
 
     @Override
     protected void onDestroy() {
@@ -222,6 +168,42 @@ public class MapActivity extends AppCompatActivity {
         locationClient.unRegisterLocationListener(mbdLocationListener);
     }
 
+    private class MbdLocationListener implements BDLocationListener {
+
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+
+            //创建MyLocationData类
+            MyLocationData locationdata = new MyLocationData.Builder()
+                    .accuracy(location.getRadius())
+                    .latitude(location.getLatitude())
+                    .longitude(location.getLongitude())
+                    .build();
+            //在BaiduMap中设置
+            baiduMap.setMyLocationData(locationdata);
+
+            mLatitude = location.getLatitude();
+            mLongitude = location.getLongitude();
+
+            //判断是否第一次定位，如果是执行如下代码
+
+            if (isFirstIn) {
+                LatLng latLng = new LatLng(mLatitude, mLongitude);
+                MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
+                baiduMap.animateMapStatus(msu);
+                isFirstIn = false;
+                Toast.makeText(
+                        context,
+                        "地址是：" + location.getAddrStr() + "\n"
+                                + "定位精度是：" + location.getRadius()
+                        , Toast.LENGTH_LONG).show();
+                Log.e("Address", String.valueOf(location.getCity()));
+                Log.e("District", String.valueOf(location.getAddrStr()));
+                Log.e("Location", String.valueOf(location));
+
+            }
+        }
 
 
+    }
 }

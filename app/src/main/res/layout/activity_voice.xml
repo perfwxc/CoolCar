@@ -8,9 +8,9 @@
     tools:context="com.wxc.coolcar.Main.VoiceActivity">
 
     <TextView
+        android:id="@+id/txtResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18dp"
         android:padding="8dp"
-        android:id="@+id/txtResult" />
+        android:textSize="18dp" />
 </LinearLayout>

@@ -2,11 +2,9 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <com.wxc.coolcar.Information.ItemGroup
         android:id="@+id/tel_ig"
@@ -54,7 +52,7 @@
         app:edt_hint_content="请输入用户名"
         app:jt_visible="true"
         app:paddingLeft="15dp"
-        app:title="用户名" >
+        app:title="用户名">
 
     </com.wxc.coolcar.Information.ItemGroup>
 

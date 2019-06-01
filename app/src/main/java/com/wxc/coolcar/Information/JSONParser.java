@@ -4,12 +4,7 @@ package com.wxc.coolcar.Information;
  * Created by Administrator on 2018/6/18.
  */
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.util.List;
+import android.util.Log;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -22,16 +17,23 @@ import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 public class JSONParser {
 
     static InputStream is = null;
     static JSONObject jObj = null;
     static String json = "";
+
     // constructor
     public JSONParser() {
     }
+
     public JSONObject makeHttpRequest(String url, String method,
                                       List<NameValuePair> params) {
         // Making HTTP request
@@ -39,7 +41,7 @@ public class JSONParser {
             //使用POST请求
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpPost httpPost = new HttpPost(url);
-            httpPost.setEntity(new UrlEncodedFormEntity(params,HTTP.UTF_8));
+            httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
             HttpResponse httpResponse = httpClient.execute(httpPost);
             HttpEntity httpEntity = httpResponse.getEntity();
             is = httpEntity.getContent();

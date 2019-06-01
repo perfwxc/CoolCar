@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:scrollbars="vertical"
-    android:fadingEdge="vertical">
+    android:fadingEdge="vertical"
+    android:scrollbars="vertical">
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:padding="0dp"
-        android:layout_height="match_parent">
+        android:orientation="vertical"
+        android:padding="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:background="@color/detailback"
-            android:layout_height="50dp">
+            android:layout_height="50dp"
+            android:background="@color/detailback">
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="@color/detailback"
                 app:contentInsetStart="0.0dp"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                >
-            </android.support.v7.widget.Toolbar>
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"></android.support.v7.widget.Toolbar>
+
             <Button
                 android:id="@+id/ebutton"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="20dp"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/back_btn"
-                />
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/back_btn" />
 
 
         </RelativeLayout>
+
         <com.wxc.coolcar.Chart.EnviScoreView
             android:id="@+id/imark"
             android:layout_width="match_parent"
@@ -104,9 +104,9 @@
             android:layout_marginBottom="10dp"
 
 
-            app:cardCornerRadius="4dp"
             android:foreground="?attr/selectableItemBackgroundBorderless"
-            >
+            app:cardCornerRadius="4dp">
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="153dp"
@@ -156,9 +156,9 @@
             android:layout_marginBottom="10dp"
 
 
-            app:cardCornerRadius="4dp"
             android:foreground="?attr/selectableItemBackgroundBorderless"
-            >
+            app:cardCornerRadius="4dp">
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="153dp"
@@ -208,9 +208,9 @@
             android:layout_marginBottom="10dp"
 
 
-            app:cardCornerRadius="4dp"
             android:foreground="?attr/selectableItemBackgroundBorderless"
-            >
+            app:cardCornerRadius="4dp">
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="153dp"
@@ -260,9 +260,9 @@
             android:layout_marginBottom="10dp"
 
 
-            app:cardCornerRadius="4dp"
             android:foreground="?attr/selectableItemBackgroundBorderless"
-            >
+            app:cardCornerRadius="4dp">
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="153dp"
@@ -309,18 +309,18 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/tips"
             android:layout_gravity="center_horizontal"
-            />
+            android:background="@drawable/tips" />
 
         <TextView
             android:id="@+id/tip1"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="3dp"
+            android:layout_marginTop="5dp"
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/tip2"
             android:layout_width="320dp"
@@ -328,6 +328,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="3dp"
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/tip3"
             android:layout_width="320dp"
@@ -335,6 +336,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="3dp"
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/tip4"
             android:layout_width="320dp"
@@ -342,6 +344,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="3dp"
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/tip5"
             android:layout_width="320dp"
@@ -349,6 +352,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="3dp"
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/tip6"
             android:layout_width="320dp"
@@ -356,6 +360,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="3dp"
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/tip7"
             android:layout_width="320dp"
@@ -363,6 +368,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="3dp"
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/tip8"
             android:layout_width="320dp"
@@ -370,6 +376,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10dp"
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/tip9"
             android:layout_width="320dp"
@@ -378,6 +385,7 @@
             android:layout_marginBottom="3dp"
 
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/tip10"
             android:layout_width="320dp"
@@ -385,7 +393,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="3dp"
             android:textSize="15sp" />
-
 
 
     </LinearLayout>

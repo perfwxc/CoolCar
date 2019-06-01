@@ -9,6 +9,7 @@ import android.widget.Toast;
 public class PowerLED {
     boolean m_isOn;
     Camera m_Camera;
+
     /**
      * 闪光初始化
      */
@@ -19,13 +20,13 @@ public class PowerLED {
          */
         try {
             m_Camera = Camera.open();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             Log.d("TAG", "Error is " + e.getMessage());
             Toast.makeText(context, "请在设置中打开应用相机权限",
                     Toast.LENGTH_LONG).show();
         }
     }
+
     /**
      * 打开闪光灯
      */
@@ -41,6 +42,7 @@ public class PowerLED {
             }
         }
     }
+
     /**
      * 关闭闪光
      */
@@ -57,11 +59,12 @@ public class PowerLED {
             }
         }
     }
+
     /**
      * 释放相机资源
      */
     public void Destroy() {
-        if (m_Camera != null){
+        if (m_Camera != null) {
             m_Camera.release();//释放相机资源
             m_Camera = null;//清空相机
         }

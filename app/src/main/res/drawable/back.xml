@@ -5,7 +5,7 @@
     <item
         android:bottom="3dp"
         android:right="3dp">
-        <shape android:shape="rectangle" >
+        <shape android:shape="rectangle">
 
             <gradient
                 android:angle="270"
