@@ -22,8 +22,8 @@ public class User implements Serializable {
     private String Name;                    //用户名
     private String Address;                 //用户地址
     private String Type;                    //用户车型
-    private String telephone;               //电话号码
-    private String emergencyPhone;          //应急电话
+    private String Telephone;               //电话号码
+    private String EmergencyPhone;          //应急电话
     private String ide;                     //编号
     private String TIME;                    //测量时间
     private String timeStamp1;              //时间戳第一部分
@@ -178,19 +178,19 @@ public class User implements Serializable {
     }
 
     public String getEmergencyPhone() {
-        return emergencyPhone;
+        return EmergencyPhone;
     }
 
     public void setEmergencyPhone(String emergencyPhone) {
-        this.emergencyPhone = emergencyPhone;
+        this.EmergencyPhone = EmergencyPhone;
     }
 
     public String getTelephone() {
-        return telephone;
+        return Telephone;
     }
 
     public void setTelephone(String Num) {
-        this.telephone = Num;
+        this.Telephone = Num;
     }
 
     public String getTimeStamp1() {

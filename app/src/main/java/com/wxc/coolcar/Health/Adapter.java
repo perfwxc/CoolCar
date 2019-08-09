@@ -129,7 +129,7 @@ public class Adapter extends BaseAdapter {
             time2 += 12;
         String newTime = String.valueOf(time2);
         String finalTime = "<small><small>" + subTimeStamp1 + "</small></small><br/>" + "<strong>" + newTime + subTime + "</strong>";
-        double Lux = new BigDecimal(Double.parseDouble(list.get(position).getLux()) / 10000).setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();
+        double alcoholConcentration = new BigDecimal(Double.parseDouble(list.get(position).getAlcoholConcentration()) / 10000).setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();
         int heartRate = Integer.parseInt(list.get(position).getHeartRate());
         int highBloodPressure = Integer.parseInt(list.get(position).getHighBloodPressure());
         int lowBloodPressure = Integer.parseInt(list.get(position).getLowBloodPressure());
@@ -137,55 +137,55 @@ public class Adapter extends BaseAdapter {
         tv2.setText("   心率:    " + list.get(position).getHeartRate() + "次/分");
         tv3.setText("   高血压:    " + list.get(position).getHighBloodPressure() + "mmHg");
         tv4.setText("   低血压:    " + list.get(position).getLowBloodPressure() + "mmHg");
-        tv5.setText("   酒精浓度:    " + Lux + "g/L");
+        tv5.setText("   酒精浓度:    " + alcoholConcentration + "g/L");
         tv6.setText("   血氧饱和度:    " + list.get(position).getSaO2() + "%");
 
         img.setText(Html.fromHtml(finalTime));
 
 
-        if (((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (Lux < 0.800))) {
+        if (((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (alcoholConcentration < 0.800))) {
             img1.setImageResource(R.drawable.i1);
         }
-        if (((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (Lux < 0.800))
-                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (Lux < 0.800))
-                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (Lux < 0.800))
-                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (Lux < 0.800))
-                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (Lux >= 0.800))
+        if (((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (alcoholConcentration < 0.800))
+                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (alcoholConcentration < 0.800))
+                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (alcoholConcentration < 0.800))
+                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (alcoholConcentration < 0.800))
+                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (alcoholConcentration >= 0.800))
                 )
             img1.setImageResource(R.drawable.i2);
-        if (((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (Lux < 0.800))
-                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (Lux < 0.800))
-                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (Lux < 0.800))
-                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (Lux > 0.800))
+        if (((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (alcoholConcentration < 0.800))
+                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (alcoholConcentration < 0.800))
+                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (alcoholConcentration < 0.800))
+                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (alcoholConcentration > 0.800))
 
-                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (Lux < 0.800))
-                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (Lux < 0.800))
-                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (Lux > 0.800))
+                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (alcoholConcentration < 0.800))
+                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (alcoholConcentration < 0.800))
+                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (alcoholConcentration > 0.800))
 
-                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (Lux < 0.800))
-                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (Lux > 0.800))
-                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (Lux > 0.800))
+                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (alcoholConcentration < 0.800))
+                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (alcoholConcentration > 0.800))
+                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (alcoholConcentration > 0.800))
                 )
             img1.setImageResource(R.drawable.i3);
-        if (((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (Lux > 0.800))
-                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (Lux > 0.800))
-                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (Lux > 0.800))
-                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (Lux < 0.800))
+        if (((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (alcoholConcentration > 0.800))
+                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (alcoholConcentration > 0.800))
+                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (alcoholConcentration > 0.800))
+                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (alcoholConcentration < 0.800))
 
-                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (Lux < 0.800))
-                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (Lux > 0.800))
-                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (Lux < 0.800))
+                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (alcoholConcentration < 0.800))
+                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (alcoholConcentration > 0.800))
+                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (alcoholConcentration < 0.800))
 
-                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (Lux > 0.800))
-                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (Lux < 0.800))
-                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (Lux < 0.800))
+                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (alcoholConcentration > 0.800))
+                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (alcoholConcentration < 0.800))
+                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (alcoholConcentration < 0.800))
                 )
             img1.setImageResource(R.drawable.i4);
-        if (((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (Lux < 0.800))
-                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (Lux > 0.800))
-                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (Lux > 0.800))
-                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (Lux > 0.800))
-                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (Lux > 0.800))
+        if (((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (alcoholConcentration < 0.800))
+                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure >= 60 && lowBloodPressure <= 90) && (alcoholConcentration > 0.800))
+                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure >= 90 && highBloodPressure <= 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (alcoholConcentration > 0.800))
+                || ((userTemperature < 36.0 || userTemperature > 37.0) && (heartRate >= 60 && heartRate <= 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (alcoholConcentration > 0.800))
+                || ((userTemperature >= 36.0 && userTemperature <= 37.0) && (heartRate < 60 || heartRate > 100) && (highBloodPressure < 90 || highBloodPressure > 140) && (lowBloodPressure < 60 || lowBloodPressure > 90) && (alcoholConcentration > 0.800))
                 )
             img1.setImageResource(R.drawable.i5);       //为条目右侧的ImageView设置分级标识
         img1.setOnClickListener(mListener);             //设置分级的点击事件

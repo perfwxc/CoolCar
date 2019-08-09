@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">易驾</string>
+    <string name="app_name">车载精灵</string>
     <string name="img">环境质量</string>
     <string name="textlogin_id">用户名（默认为110）</string>
     <string name="textlogin_password">密码（默认为110）</string>
@@ -19,7 +19,7 @@
     <string name="exit">EXIT</string>
     <string name="start">GOT IT</string>
     <string name="introname"> </string>s
-    <string name="introgroup"> 智能网联汽车驾驶健康伙伴系统</string>
+    <string name="introgroup"> 基于驾驶员生理参数的安全预警系统</string>
     <string name="IflytekAPP_id">5b0d72c2</string>
 
 
