@@ -79,7 +79,7 @@
 |5|`腾讯短信`|  用于短信验证注册、登陆 |[腾讯短信](https://cloud.tencent.com/ "悬停显示")|
 
 ### 数据库
-数据库采用MySQL，在数据库方面的基础不是很扎实，因此设计可能较为粗略，但可满足项目基本需求。<br>
+数据库采用MySQL，没有学过数据库课程，因此设计可能较为粗略，但可满足项目基本需求。<br>
 附数据库.sql文件下载：[CoolCar.sql](https://raw.githubusercontent.com/perfwxc/CoolCar/master/release/data/coolcar.sql "悬停显示")
 
 
