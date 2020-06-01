@@ -67,7 +67,7 @@
 ### 开发工具
 
 安卓项目开发采用Android Studio 3.0，最低支持安卓版本为5.0。服务器采用腾讯云服务器，服务器软件使用了PHPStudy（包含Apache、PHPMyAdmin、MySQL等集成环境）。<br>
-　　　　　　　　　<img src="https://oss.perfwxc.cn/CoolCar_GitHub_安卓开发工具.png" height=200px>  　　　<img src="https://oss.perfwxc.cn/CoolCar_GitHub_phpstudy.png" height=200px>
+　　　　　　　　　<img src="https://oss.perfwxc.cn/CoolCar_GitHub_安卓开发工具.png" height=250px>  　　　<img src="https://oss.perfwxc.cn/CoolCar_GitHub_phpstudy.png" height=250px>
 
 ### API调用
 |#|API|使用功能|调用地址|
