@@ -5,7 +5,7 @@
 	
 |Author|Perfwxc|
 |---|---
-|E-mail|bigwxc@gmail.com
+|E-mail|perfwxc@gmail.com
 |WebSite|www.perfwxc.cn
 
 
@@ -103,7 +103,7 @@
 
 ## 视频展示
 
-[点击观看本项目演示视频](https://www.bilibili.com/video/BV14E411i72o "基于驾驶员生理参数的安全预警系统
+[点击观看本项目演示视频](https://youtu.be/K6gheE6on2Q "基于驾驶员生理参数的安全预警系统
 ")
 
 **如果这个项目对您有帮助请点击Star哦**:sparkling_heart::sparkling_heart:<br>
